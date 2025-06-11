@@ -7,3 +7,21 @@ body {
   background-color: #f4f4f4;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
+main.contenido {
+  flex: 1 0 auto;
+}
+
+app-footer {
+  flex-shrink: 0;
+}

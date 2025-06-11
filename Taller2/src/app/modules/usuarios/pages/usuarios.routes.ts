@@ -1,6 +1,6 @@
 
 import { Routes } from '@angular/router';
-import { SigniinComponent } from './signiin/signiin.component';
+import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 
 
@@ -10,8 +10,8 @@ export const usuariosRoutes: Routes = [
         path : '',
         children : [
             {
-                path : 'signiin',
-                component : SigniinComponent
+                path : 'signin',
+                component : SigninComponent
             },
               {
                 path : 'signup',
