@@ -1,0 +1,30 @@
+[
+  {
+    "email": "mayra@gmail.com",
+    "password": "1234",
+    "nombre": "Mayra",
+    "apellido": "Fazzari",
+    "direccion": "Mi casa 123"
+  },
+  {
+    "email": "fraganciasfg2024@gmail.com",
+    "password": "1234",
+    "nombre": "test",
+    "apellido": "fazzari",
+    "direccion": "rrrr"
+  },
+  {
+    "email": "test@unlam.edu.ar",
+    "password": "aaaa",
+    "nombre": "test",
+    "apellido": "aaaa",
+    "direccion": "aaaa"
+  },
+  {
+    "email": "ailen@gmail.com",
+    "password": "ailen123",
+    "nombre": "ailen",
+    "apellido": "fazzari",
+    "direccion": "illia2044"
+  }
+]

@@ -1,33 +1,26 @@
 <div class="signup-container">
-  <h2>Registrarse</h2>
+   <h2>Registrarme</h2>
+<form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
+  <label>Email:</label>
+  <input type="email" name="email" ngModel required>
+  <br>
 
-  <form>
-    <label>Email:</label>
-    <input type="email" formControlName="email">
-    <br>
+  <label>Contraseña:</label>
+  <input type="password" name="password" ngModel required>
+  <br>
 
-    <label>Contraseña:</label>
-    <input type="password" formControlName="password">
-   
-    <br>
+  <label>Nombre:</label>
+  <input type="text" name="nombre" ngModel required>
+  <br>
 
-    <label>Nombre:</label>
-    <input type="text" formControlName="nombre">
-   
-    <br>
+  <label>Apellido:</label>
+  <input type="text" name="apellido" ngModel required>
+  <br>
 
-    <label>Apellido:</label>
-    <input type="text" formControlName="apellido">
-    
-    <br>
+  <label>Dirección:</label>
+  <input type="text" name="direccion" ngModel required>
+  <br>
 
-    <label>Dirección:</label>
-    <input type="text" formControlName="direccion">
-    
-    
-    <br>
-
-    <button type="submit">Registrarme</button>
-  </form>
+  <button type="submit">Registrarme</button>
+</form>
 </div>
-
