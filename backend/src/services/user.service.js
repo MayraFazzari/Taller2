@@ -13,9 +13,13 @@ function leerUsuarios() {
   return JSON.parse(data)
 }
 
+
+
 function guardarUsuarios(usuarios) {
   fs.writeFileSync(usuariosPath, JSON.stringify(usuarios, null, 2))
 }
+
+
 
 export function registerService({ email, password, nombre, apellido, direccion }) {
   if (!email || !password || !nombre || !apellido || !direccion) {
@@ -34,6 +38,9 @@ export function registerService({ email, password, nombre, apellido, direccion }
 
   return { status: 201, msg: 'Usuario registrado con éxito' }
 }
+
+
+
 
 export function loginService({ email, password }) {
   const usuarios = leerUsuarios()

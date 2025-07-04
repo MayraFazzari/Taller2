@@ -1,13 +1,19 @@
 import express from 'express';
 import cors from 'cors';
-import userRoutes from './src/routes/user.routes.js'; 
+import userRoutes from './src/routes/user.routes.js';
+import productosRoutes from './src/routes/productos.routes.js';
 
-const app = express();
+const app = express(); // <-- ESTA LÍNEA TIENE QUE VENIR ANTES DE USAR app
 
-app.use(cors()); 
+app.use(cors());
 app.use(express.json());
 
-app.use('/api', userRoutes); 
+// Servir imágenes
+app.use('/public', express.static('public'));
+
+// Rutas
+app.use('/api', userRoutes);
+app.use('/productos', productosRoutes);
 
 app.listen(5000, () => {
   console.log('todoOk');

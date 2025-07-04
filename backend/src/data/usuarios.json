@@ -26,5 +26,12 @@
     "nombre": "ailen",
     "apellido": "fazzari",
     "direccion": "illia2044"
+  },
+  {
+    "email": "marcela@gmail.com",
+    "password": "marcela123",
+    "nombre": "marcela",
+    "apellido": "clerici",
+    "direccion": "illia2044"
   }
 ]
