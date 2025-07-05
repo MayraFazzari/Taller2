@@ -1,0 +1,74 @@
+.carrito-container {
+  background-color: #f4f4f4;
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.carrito-container h1 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.carrito-tabla {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.carrito-tabla table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.carrito-tabla th,
+.carrito-tabla td {
+  text-align: center;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.carrito-tabla th:first-child,
+.carrito-tabla td:first-child {
+  text-align: left;
+}
+
+.carrito-tabla input[type='number'] {
+  width: 60px;
+  text-align: center;
+  padding: 0.3rem;
+}
+
+.btn-eliminar {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.carrito-total {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.total-box {
+  background-color: white;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  text-align: right;
+}
+
+.btn-finalizar {
+  margin-top: 1rem;
+  background-color: black;
+  color: white;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
