@@ -151,6 +151,30 @@
     "clasificacion": "rimel",
     "precio": 12500,
     "imagen": "/public/imagenes/rimel3.jpg"
+  },
+  {
+    "id": 21,
+    "nombre": "Base primer",
+    "descripcion": "Base profesional",
+    "clasificacion": "bases",
+    "precio": 18500,
+    "imagen": "/public/imagenes/base1.jpg"
+  },
+  {
+    "id": 22,
+    "nombre": "Base Stay",
+    "descripcion": "Base 24 horas",
+    "clasificacion": "bases",
+    "precio": 20000,
+    "imagen": "/public/imagenes/base2.jpg"
+  },
+  {
+    "id": 23,
+    "nombre": "Base Fitme",
+    "descripcion": "Base mate 16H",
+    "clasificacion": "bases",
+    "precio": 19500,
+    "imagen": "/public/imagenes/base3.jpg"
   }
   
 ]
