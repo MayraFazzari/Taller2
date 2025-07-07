@@ -6,49 +6,95 @@
 
       <div class="filter-group">
         <strong>Categoría</strong><br />
-        <label><input type="checkbox" value="Labiales" /> Labiales</label><br />
-        <label><input type="checkbox" value="Bases" /> Bases</label><br />
-        <label><input type="checkbox" value="Correctores" /> Correctores</label><br />
-        <label><input type="checkbox" value="Contornos" /> Contornos</label><br />
-        <label><input type="checkbox" value="Rimels" /> Rimels</label><br />
-        <label><input type="checkbox" value="Brochas de Maquillaje" /> Brochas de Maquillaje</label><br />
-        <label><input type="checkbox" value="Delineadores de ojos" /> Delineadores de ojos</label><br />
-        <label><input type="checkbox" value="Polvos" /> Polvos</label>
+        <label>
+          <input 
+            type="checkbox" 
+            (change)="onCategoriaChange($event, 'labial')" 
+            [checked]="categoriasSeleccionadas.has('labial')" />
+          Labiales
+        </label><br />
+        <label>
+          <input 
+            type="checkbox" 
+            (change)="onCategoriaChange($event, 'bases')" 
+            [checked]="categoriasSeleccionadas.has('bases')" />
+          Bases
+        </label><br />
+        <label>
+          <input 
+            type="checkbox" 
+            (change)="onCategoriaChange($event, 'corrector')" 
+            [checked]="categoriasSeleccionadas.has('corrector')" />
+          Correctores
+        </label><br />
+        <label>
+          <input 
+            type="checkbox" 
+            (change)="onCategoriaChange($event, 'contorno')" 
+            [checked]="categoriasSeleccionadas.has('contorno')" />
+          Contornos
+        </label><br />
+        <label>
+          <input 
+            type="checkbox" 
+            (change)="onCategoriaChange($event, 'rimel')" 
+            [checked]="categoriasSeleccionadas.has('rimel')" />
+          Rimels
+        </label><br />
+        <label>
+          <input 
+            type="checkbox" 
+            (change)="onCategoriaChange($event, 'brochas')" 
+            [checked]="categoriasSeleccionadas.has('brochas')" />
+          Brochas de Maquillaje
+        </label><br />
+        <label>
+          <input 
+            type="checkbox" 
+            (change)="onCategoriaChange($event, 'delineador')" 
+            [checked]="categoriasSeleccionadas.has('delineador')" />
+          Delineadores de ojos
+        </label><br />
+        <label>
+          <input 
+            type="checkbox" 
+            (change)="onCategoriaChange($event, 'polvo')" 
+            [checked]="categoriasSeleccionadas.has('polvo')" />
+          Polvos
+        </label>
       </div>
 
-      <div class="filter-group">
-        <strong>Precio</strong><br />
-        <label>Desde: <input type="number" min="0" /></label><br />
-        <label>Hasta: <input type="number" min="0" /></label>
-      </div>
 
-      <div class="filter-group">
-        <strong>Marca</strong><br />
-        <label><input type="checkbox" /> Natura</label><br />
-        <label><input type="checkbox" /> Dapop</label><br />
-        <label><input type="checkbox" /> Nivea</label><br />
-        <label><input type="checkbox" /> Avon</label><br />
-        <label><input type="checkbox" /> Maybelline</label>
-      </div>
-
-      <div class="filter-group">
-        <strong>Ordenar por</strong><br />
-        <label><input type="radio" name="orden" /> Precio: menor a mayor</label><br />
-        <label><input type="radio" name="orden" /> Precio: mayor a menor</label>
-      </div>
+    <div class="filter-group">
+  <strong>Ordenar por</strong><br />
+  <label>
+    <input 
+      type="radio" 
+      name="orden" 
+      (change)="ordenarProductos('menor')" 
+      [checked]="ordenSeleccionado === 'menor'" />
+    Precio: menor a mayor
+  </label><br />
+  <label>
+    <input 
+      type="radio" 
+      name="orden" 
+      (change)="ordenarProductos('mayor')" 
+      [checked]="ordenSeleccionado === 'mayor'" />
+    Precio: mayor a menor
+  </label>
+</div>
     </aside>
 
-
-
     <section class="products-list">
-  <div *ngFor="let producto of productos" class="product-card" style="background-color: white;">
-    <img [src]="'http://localhost:5000' + producto.imagen" alt="{{ producto.nombre }}" />
-    <h3>{{ producto.nombre }}</h3>
-    <p>{{ producto.descripcion }}</p>
-    <p><strong>$ {{ producto.precio }}</strong></p>
-    <button (click)="agregarAlCarrito(producto)" style="background-color: black; color: white; padding: 1em; border-radius: 0.7em;">Agregar al carrito</button>
-  </div>
-</section>
-
+      <div *ngFor="let producto of productosFiltrados" class="product-card" style="background-color: white;">
+        <img [src]="'http://localhost:5000' + producto.imagen" alt="{{ producto.nombre }}" />
+        <h3>{{ producto.nombre }}</h3>
+        <p>{{ producto.descripcion }}</p>
+        <p><strong>$ {{ producto.precio }}</strong></p>
+       <button (click)="agregarAlCarrito(producto)" style="background-color: #d63384; color: white; padding: 1em; border-radius: 0.7em; border: none; outline: none;"> 🛒 Agregar al carrito</button>
+      </div>
+    </section>
   </div>
 </main>
+
