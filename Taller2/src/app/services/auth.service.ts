@@ -1,14 +1,31 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
-@Injectable({ providedIn: 'root' }) 
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
-  private apiUrl = 'http://localhost:5000/api';
+  private usuarioActual = new BehaviorSubject<any>(this.getUsuarioDesdeStorage());
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
-  register(userData: any): Observable<{ msg: string }> {
-    return this.http.post<{ msg: string }>(`${this.apiUrl}/register`, userData);
+  private getUsuarioDesdeStorage() {
+    const data = localStorage.getItem('usuario');
+    return data ? JSON.parse(data) : null;
+  }
+
+  getUsuario() {
+    return this.usuarioActual.asObservable();
+  }
+
+  setUsuario(usuario: any) {
+    localStorage.setItem('usuario', JSON.stringify(usuario));
+    this.usuarioActual.next(usuario);
+  }
+
+  cerrarSesion() {
+    localStorage.removeItem('usuario');
+    this.usuarioActual.next(null);
   }
 }
+

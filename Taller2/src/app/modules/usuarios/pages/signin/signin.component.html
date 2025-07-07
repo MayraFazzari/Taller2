@@ -1,15 +1,16 @@
 <div class="signin-container">
-  <h2>Iniciar sesion</h2>
+  <h2>Iniciar sesión</h2>
 
-  <form>
+  <form [formGroup]="formulario" (ngSubmit)="iniciarSesion()">
     <label>Email:</label>
     <input type="email" formControlName="email">
     <br>
 
     <label>Contraseña:</label>
     <input type="password" formControlName="password">
-   
+    <br>
 
-    <button type="submit">Iniciar sesion</button>
+    <button type="submit">Iniciar sesión</button>
   </form>
 </div>
+

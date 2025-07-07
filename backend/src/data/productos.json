@@ -2,7 +2,7 @@
   {
     "id": 1,
     "nombre": "Labial Mate Rosa",
-    "descripcion": "Labial mate de larga duración",
+    "descripcion": "Labial de larga duración",
     "clasificacion": "Labial",
     "precio": 3200,
     "imagen": "/public/imagenes/labial1.jpg"
@@ -60,9 +60,97 @@
     "id": 9,
     "nombre": "Polvo matte",
     "descripcion": "Polvo compacto mate",
-    "clasificacion": "Polvo mate",
+    "clasificacion": "Polvo",
     "precio": 4500,
     "imagen": "/public/imagenes/polvo2.jpg"
+  },
+    {
+    "id": 10,
+    "nombre": "Brochas x2",
+    "descripcion": "Brocha contorno",
+    "clasificacion": "Brochas",
+    "precio": 5000,
+    "imagen": "/public/imagenes/brochas1.jpg"
+  },
+   {
+    "id": 11,
+    "nombre": "Brochas individual",
+    "descripcion": "Brocha contorno individual",
+    "clasificacion": "Brochas",
+    "precio": 3000,
+    "imagen": "/public/imagenes/brochas2.jpg"
+  },
+   {
+    "id": 12,
+    "nombre": "Brochas Dapop",
+    "descripcion": "Brocha Ultra",
+    "clasificacion": "Brochas",
+    "precio": 4000,
+    "imagen": "/public/imagenes/brochas3.jpg"
+  },
+   {
+    "id": 13,
+    "nombre": "Contorno en barra",
+    "descripcion": "Contorno en barra",
+    "clasificacion": "Contorno",
+    "precio": 6000,
+    "imagen": "/public/imagenes/contorno1.jpg"
+  },
+   {
+    "id": 14,
+    "nombre": "Contorno en polvo",
+    "descripcion": "Contorno en polvo mate",
+    "clasificacion": "Contorno",
+    "precio": 7000,
+    "imagen": "/public/imagenes/contorno2.jpg"
+  },
+    {
+    "id": 15,
+    "nombre": "Contorno Mario",
+    "descripcion": "Contorno en barra HD",
+    "clasificacion": "Contorno",
+    "precio": 8500,
+    "imagen": "/public/imagenes/contorno3.jpg"
+  },
+    {
+    "id": 16,
+    "nombre": "Delineador fibra",
+    "descripcion": "Delineador fibra FACES",
+    "clasificacion": "delineador",
+    "precio": 9000,
+    "imagen": "/public/imagenes/delineador1.jpg"
+  },
+   {
+    "id": 17,
+    "nombre": "Delineador liquido",
+    "descripcion": "Delineador a prueba de agua",
+    "clasificacion": "delineador",
+    "precio": 9500,
+    "imagen": "/public/imagenes/delineador2.jpg"
+  },
+   {
+    "id": 18,
+    "nombre": "Rimel FASES",
+    "descripcion": "Rimel a prueba de agua",
+    "clasificacion": "rimel",
+    "precio": 9800,
+    "imagen": "/public/imagenes/rimel1.jpg"
+  },
+   {
+    "id": 19,
+    "nombre": "Rimel 3D",
+    "descripcion": "Rimel Extra Large",
+    "clasificacion": "rimel",
+    "precio": 10500,
+    "imagen": "/public/imagenes/rimel2.jpg"
+  },
+   {
+    "id": 20,
+    "nombre": "Rimel Transparente",
+    "descripcion": "Máscara De Cejas Y Pestañas Transparente",
+    "clasificacion": "rimel",
+    "precio": 12500,
+    "imagen": "/public/imagenes/rimel3.jpg"
   }
   
 ]
