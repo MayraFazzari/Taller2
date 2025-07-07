@@ -84,7 +84,6 @@
     Precio: mayor a menor
   </label>
 </div>
-
     </aside>
 
     <section class="products-list">
@@ -93,7 +92,7 @@
         <h3>{{ producto.nombre }}</h3>
         <p>{{ producto.descripcion }}</p>
         <p><strong>$ {{ producto.precio }}</strong></p>
-       <button style="background-color: #d63384; color: white; padding: 1em; border-radius: 0.7em; border: none; outline: none;"> 🛒 Agregar al carrito</button>
+       <button (click)="agregarAlCarrito(producto)" style="background-color: #d63384; color: white; padding: 1em; border-radius: 0.7em; border: none; outline: none;"> 🛒 Agregar al carrito</button>
       </div>
     </section>
   </div>
