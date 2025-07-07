@@ -13,37 +13,24 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Producto de ejemplo -->
         <tr>
-          <td>Labial Mate Rosa</td>
-          <td>$1200</td>
+          <tr *ngFor="let item of carrito">
+          <td>{{ item.nombre }}</td>
+          <td>${{ item.precio }}</td>
           <td>
-            <input type="number" value="1" min="1" />
+            <button (click)="cambiarCantidad(item, -1)" class="btn-cant">-</button>
+              {{ item.cantidad }}
+            <button (click)="cambiarCantidad(item, 1)" class="btn-cant">+</button>
           </td>
-          <td>$1200</td>
-          <td>
-            <button class="btn-eliminar">Eliminar</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Labial Mate Rojo</td>
-          <td>$1200</td>
-          <td>
-            <input type="number" value="1" min="1" />
-          </td>
-          <td>$1200</td>
-          <td>
-            <button class="btn-eliminar">Eliminar</button>
-          </td>
+          <td>${{ item.precio * item.cantidad }}</td>
+          <td><button (click)="eliminarItem(item)" class="btn-eliminar">Eliminar</button></td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <div class="carrito-total">
-    <div class="total-box">
-      <p><strong>Total:</strong> $000</p>
-      <button class="btn-finalizar">Finalizar Compra</button>
-    </div>
+    <p><strong>Total:</strong> ${{ getTotal() }}</p>
+    <button class="btn-finalizar">Finalizar Compra</button>
   </div>
 </div>
