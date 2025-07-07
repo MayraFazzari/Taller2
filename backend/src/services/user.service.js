@@ -42,13 +42,34 @@ export function registerService({ email, password, nombre, apellido, direccion }
 
 
 
+
 export function loginService({ email, password }) {
+  if (!email || !password) {
+    return { status: 400, msg: 'Faltan datos' }
+  }
+
   const usuarios = leerUsuarios()
   const usuario = usuarios.find(u => u.email === email && u.password === password)
 
   if (!usuario) {
-    return { status: 401, msg: 'Email o contraseña incorrectos' }
+    return { status: 401, msg: 'Credenciales incorrectas' }
   }
 
-  return { status: 200, msg: 'Login exitoso', nombre: usuario.nombre }
+  return {
+    status: 200,
+    msg: 'Login exitoso',
+    usuario: {
+      email: usuario.email,
+      nombre: usuario.nombre,
+      apellido: usuario.apellido,
+      direccion: usuario.direccion,
+      carrito: usuario.carrito || []
+    }
+  }
 }
+
+
+
+
+
+

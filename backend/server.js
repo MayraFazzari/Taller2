@@ -3,7 +3,7 @@ import cors from 'cors';
 import userRoutes from './src/routes/user.routes.js';
 import productosRoutes from './src/routes/productos.routes.js';
 
-const app = express(); // <-- ESTA LÍNEA TIENE QUE VENIR ANTES DE USAR app
+const app = express(); 
 
 app.use(cors());
 app.use(express.json());

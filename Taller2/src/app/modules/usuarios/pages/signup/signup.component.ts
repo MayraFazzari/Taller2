@@ -1,27 +1,44 @@
 import { Component } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
-import { AuthService } from '../../../../services/auth.service';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [FormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './signup.component.html',
-  styleUrl: './signup.component.css'
+  styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
-  constructor(private authService: AuthService) {}
+  formulario: FormGroup;
 
-  onSubmit(form: NgForm) {
-    if (form.invalid) return;
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private router: Router
+  ) {
+    this.formulario = this.fb.group({
+      email: [''],
+      password: [''],
+      nombre: [''],
+      apellido: [''],
+      direccion: ['']
+    });
+  }
 
-    this.authService.register(form.value).subscribe({
-      next: res => {
-        alert(res.msg);
-        form.reset();
+  registrarUsuario() {
+    const datos = this.formulario.value;
+
+    this.http.post('http://localhost:5000/api/register', datos).subscribe({
+      next: (res: any) => {
+        alert('Registro exitoso');
+        this.router.navigate(['/usuarios/signin']);
       },
-      error: err => {
-        alert('Error al registrarse');
+      error: (err: any) => {
+        alert(err.error?.msg || 'Error al registrarse');
+        console.error(err);
       }
     });
   }

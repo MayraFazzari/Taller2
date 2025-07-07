@@ -41,12 +41,12 @@
   
     
     <section class="products-list">
-  <div *ngFor="let producto of productos" class="product-card">
+  <div *ngFor="let producto of productos" class="product-card" style="background-color: white;">
     <img [src]="'http://localhost:5000' + producto.imagen" alt="{{ producto.nombre }}" />
     <h3>{{ producto.nombre }}</h3>
     <p>{{ producto.descripcion }}</p>
     <p><strong>$ {{ producto.precio }}</strong></p>
-    <button>Agregar al carrito</button>
+    <button style="background-color: black; color: white; padding: 1em; border-radius: 0.7em;">Agregar al carrito</button>
   </div>
 </section>
 

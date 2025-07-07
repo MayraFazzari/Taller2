@@ -7,5 +7,6 @@ export const register = (req, res) => {
 
 export const login = (req, res) => {
   const respuesta = loginService(req.body);
-  return res.status(respuesta.status).json({ msg: respuesta.msg, nombre: respuesta.nombre });
+ return res.status(respuesta.status).json({ msg: respuesta.msg, usuario: respuesta.usuario });
+
 };
