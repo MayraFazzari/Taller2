@@ -20,23 +20,39 @@ function guardarUsuarios(usuarios) {
 }
 
 
-
 export function registerService({ email, password, nombre, apellido, direccion }) {
   if (!email || !password || !nombre || !apellido || !direccion) {
     return { status: 400, msg: 'Faltan datos' }
   }
 
-  const usuarios = leerUsuarios()
-  const yaExiste = usuarios.find(u => u.email === email)
-  if (yaExiste) {
-    return { status: 400, msg: 'El mail ya está registrado' }
+  const emailValido = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+  if (!emailValido.test(email)) {
+    return {
+      status: 400,
+      msg: 'El email debe ser una cuenta válida de Gmail (ej: nombre@gmail.com)'
+    };
   }
 
-  const nuevoUsuario = { email, password, nombre, apellido, direccion }
-  usuarios.push(nuevoUsuario)
-  guardarUsuarios(usuarios)
+ 
+  const contraseñaSegura = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+  if (!contraseñaSegura.test(password)) {
+    return {
+      status: 400,
+      msg: 'La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número.'
+    };
+  }
 
-  return { status: 201, msg: 'Usuario registrado con éxito' }
+  const usuarios = leerUsuarios();
+  const yaExiste = usuarios.find(u => u.email === email);
+  if (yaExiste) {
+    return { status: 400, msg: 'El mail ya está registrado' };
+  }
+
+  const nuevoUsuario = { email, password, nombre, apellido, direccion };
+  usuarios.push(nuevoUsuario);
+  guardarUsuarios(usuarios);
+
+  return { status: 201, msg: 'Usuario registrado con éxito' };
 }
 
 

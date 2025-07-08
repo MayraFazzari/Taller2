@@ -31,13 +31,13 @@
       </tbody>
     </table>
 
-    <!-- Si el carrito está vacío -->
+   
     <ng-template #carritoVacio>
       <p class="carrito-vacio">Tu carrito está vacío 😢</p>
     </ng-template>
   </div>
 
-  <!-- Total debajo -->
+
   <div class="carrito-total" *ngIf="carrito.length > 0">
     <div class="total-box">
       <p><strong>Total:</strong> $ {{ getTotal() }}</p>

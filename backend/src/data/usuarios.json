@@ -13,7 +13,28 @@
         "clasificacion": "Labial",
         "precio": 3200,
         "imagen": "/public/imagenes/labial1.jpg",
-        "cantidad": 2
+        "marca": "Dapop",
+        "cantidad": 1
+      },
+      {
+        "id": 4,
+        "nombre": "Corrector cremoso",
+        "descripcion": "Corrector en barra",
+        "clasificacion": "corrector",
+        "precio": 4000,
+        "imagen": "/public/imagenes/corrector1.jpg",
+        "marca": "Rimmel",
+        "cantidad": 1
+      },
+      {
+        "id": 5,
+        "nombre": "Corrector",
+        "descripcion": "Corrector NG",
+        "clasificacion": "Corrector",
+        "precio": 6000,
+        "imagen": "/public/imagenes/corrector2.jpg",
+        "marca": "Rimmel",
+        "cantidad": 1
       }
     ]
   },
@@ -44,5 +65,19 @@
     "nombre": "marcela",
     "apellido": "clerici",
     "direccion": "illia2044"
+  },
+  {
+    "email": "ailen.com",
+    "password": "123",
+    "nombre": "ailen",
+    "apellido": "fazzari",
+    "direccion": "calle12"
+  },
+  {
+    "email": "usuario1@gmail.com",
+    "password": "Usuario1",
+    "nombre": "usuario",
+    "apellido": "user",
+    "direccion": "calle"
   }
 ]
