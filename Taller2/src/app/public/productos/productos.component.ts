@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { CarritoService } from '../../services/carrito.service';
@@ -11,7 +11,7 @@ import { Router, RouterModule } from '@angular/router';
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css']
 })
-export class ProductosComponent implements OnInit {
+export class ProductosComponent implements OnInit, OnDestroy {
   productos: any[] = [];
   productosFiltrados: any[] = [];
   categoriasSeleccionadas: Set<string> = new Set();
@@ -95,5 +95,10 @@ export class ProductosComponent implements OnInit {
       next: res => alert(res.msg),
       error: () => alert('Error al agregar al carrito')
     });
+  }
+
+  ngOnDestroy(): void {
+    localStorage.removeItem('categoriasSeleccionadas');
+    localStorage.removeItem('ordenSeleccionado');
   }
 }
