@@ -5,7 +5,8 @@
     "descripcion": "Labial de larga duración",
     "clasificacion": "Labial",
     "precio": 3200,
-    "imagen": "/public/imagenes/labial1.jpg"
+    "imagen": "/public/imagenes/labial1.jpg",
+    "marca": "Dapop" 
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "descripcion": "Labial liquido rojo",
     "clasificacion": "Labial",
     "precio": 4500,
-    "imagen": "/public/imagenes/labial2.jpg"
+    "imagen": "/public/imagenes/labial2.jpg",
+    "marca": "Natura" 
   },
     {
     "id": 3,
@@ -21,7 +23,17 @@
     "descripcion": "Labial Rose",
     "clasificacion": "Labial",
     "precio": 3500,
-    "imagen": "/public/imagenes/labial3.jpg"
+    "imagen": "/public/imagenes/labial3.jpg",
+    "marca": "Mac" 
+  },
+    {
+    "id": 4,
+    "nombre": "Corrector cremoso",
+    "descripcion": "Corrector en barra",
+    "clasificacion": "corrector",
+    "precio": 4000,
+    "imagen": "/public/imagenes/corrector1.jpg",
+    "marca": "Rimmel" 
   },
     
     {
@@ -30,7 +42,8 @@
     "descripcion": "Corrector NG",
     "clasificacion": "Corrector",
     "precio": 6000,
-    "imagen": "/public/imagenes/corrector2.jpg"
+    "imagen": "/public/imagenes/corrector2.jpg",
+    "marca": "Rimmel" 
   },
     {
     "id": 6,
@@ -38,7 +51,8 @@
     "descripcion": "Corrector Ultra",
     "clasificacion": "Corrector",
     "precio": 4500,
-    "imagen": "/public/imagenes/corrector3.jpg"
+    "imagen": "/public/imagenes/corrector3.jpg",
+    "marca": "Maybelline"
   },
     {
     "id": 7,
@@ -46,7 +60,8 @@
     "descripcion": "Polvo compacto",
     "clasificacion": "Polvo",
     "precio": 4500,
-    "imagen": "/public/imagenes/polvo1.jpg"
+    "imagen": "/public/imagenes/polvo1.jpg",
+    "marca": "Maybelline"
   },
     {
     "id": 8,
@@ -54,7 +69,8 @@
     "descripcion": "Polvo extra cobertura",
     "clasificacion": "Polvo",
     "precio": 7500,
-    "imagen": "/public/imagenes/polvo3.jpg"
+    "imagen": "/public/imagenes/polvo3.jpg",
+    "marca": "Maybelline"
   },
     {
     "id": 9,
@@ -62,7 +78,8 @@
     "descripcion": "Polvo compacto mate",
     "clasificacion": "Polvo",
     "precio": 4500,
-    "imagen": "/public/imagenes/polvo2.jpg"
+    "imagen": "/public/imagenes/polvo2.jpg",
+    "marca": "Renova"
   },
     {
     "id": 10,
@@ -70,7 +87,8 @@
     "descripcion": "Brocha contorno",
     "clasificacion": "Brochas",
     "precio": 5000,
-    "imagen": "/public/imagenes/brochas1.jpg"
+    "imagen": "/public/imagenes/brochas1.jpg",
+    "marca": "Rimmel"
   },
    {
     "id": 11,
@@ -78,7 +96,8 @@
     "descripcion": "Brocha contorno individual",
     "clasificacion": "Brochas",
     "precio": 3000,
-    "imagen": "/public/imagenes/brochas2.jpg"
+    "imagen": "/public/imagenes/brochas2.jpg",
+    "marca": "Natura"
   },
    {
     "id": 12,
@@ -86,7 +105,8 @@
     "descripcion": "Brocha Ultra",
     "clasificacion": "Brochas",
     "precio": 4000,
-    "imagen": "/public/imagenes/brochas3.jpg"
+    "imagen": "/public/imagenes/brochas3.jpg",
+    "marca": "Maybelline"
   },
    {
     "id": 13,
@@ -94,7 +114,8 @@
     "descripcion": "Contorno en barra",
     "clasificacion": "Contorno",
     "precio": 6000,
-    "imagen": "/public/imagenes/contorno1.jpg"
+    "imagen": "/public/imagenes/contorno1.jpg",
+    "marca": "Renova"
   },
    {
     "id": 14,
@@ -102,7 +123,8 @@
     "descripcion": "Contorno en polvo mate",
     "clasificacion": "Contorno",
     "precio": 7000,
-    "imagen": "/public/imagenes/contorno2.jpg"
+    "imagen": "/public/imagenes/contorno2.jpg",
+    "marca": "Maybelline"
   },
     {
     "id": 15,
@@ -110,7 +132,8 @@
     "descripcion": "Contorno en barra HD",
     "clasificacion": "Contorno",
     "precio": 8500,
-    "imagen": "/public/imagenes/contorno3.jpg"
+    "imagen": "/public/imagenes/contorno3.jpg",
+    "marca": "Maybelline"
   },
     {
     "id": 16,
@@ -118,7 +141,8 @@
     "descripcion": "Delineador fibra FACES",
     "clasificacion": "delineador",
     "precio": 9000,
-    "imagen": "/public/imagenes/delineador1.jpg"
+    "imagen": "/public/imagenes/delineador1.jpg",
+    "marca": "Natura"
   },
    {
     "id": 17,
@@ -126,7 +150,8 @@
     "descripcion": "Delineador a prueba de agua",
     "clasificacion": "delineador",
     "precio": 9500,
-    "imagen": "/public/imagenes/delineador2.jpg"
+    "imagen": "/public/imagenes/delineador2.jpg",
+    "marca": "Rimmel"
   },
    {
     "id": 18,
@@ -134,7 +159,8 @@
     "descripcion": "Rimel a prueba de agua",
     "clasificacion": "rimel",
     "precio": 9800,
-    "imagen": "/public/imagenes/rimel1.jpg"
+    "imagen": "/public/imagenes/rimel1.jpg",
+    "marca": "Natura"
   },
    {
     "id": 19,
@@ -142,7 +168,8 @@
     "descripcion": "Rimel Extra Large",
     "clasificacion": "rimel",
     "precio": 10500,
-    "imagen": "/public/imagenes/rimel2.jpg"
+    "imagen": "/public/imagenes/rimel2.jpg",
+    "marca": "Rimmel"
   },
    {
     "id": 20,
@@ -150,7 +177,8 @@
     "descripcion": "Máscara De Cejas Y Pestañas Transparente",
     "clasificacion": "rimel",
     "precio": 12500,
-    "imagen": "/public/imagenes/rimel3.jpg"
+    "imagen": "/public/imagenes/rimel3.jpg",
+    "marca": "Renova"
   },
   {
     "id": 21,
@@ -158,7 +186,8 @@
     "descripcion": "Base profesional",
     "clasificacion": "bases",
     "precio": 18500,
-    "imagen": "/public/imagenes/base1.jpg"
+    "imagen": "/public/imagenes/base1.jpg",
+    "marca": "Natura"
   },
   {
     "id": 22,
@@ -166,7 +195,8 @@
     "descripcion": "Base 24 horas",
     "clasificacion": "bases",
     "precio": 20000,
-    "imagen": "/public/imagenes/base2.jpg"
+    "imagen": "/public/imagenes/base2.jpg",
+    "marca": "Rimmel"
   },
   {
     "id": 23,
@@ -174,7 +204,8 @@
     "descripcion": "Base mate 16H",
     "clasificacion": "bases",
     "precio": 19500,
-    "imagen": "/public/imagenes/base3.jpg"
+    "imagen": "/public/imagenes/base3.jpg",
+    "marca": "Maybelline"
   }
   
 ]

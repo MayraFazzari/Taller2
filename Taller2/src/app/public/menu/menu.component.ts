@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { AuthService } from '../../services/auth.service'; // ← Ruta ajustala si cambia
+import { AuthService } from '../../services/auth.service'; 
 
 @Component({
   selector: 'app-menu',
@@ -27,4 +27,3 @@ export class MenuComponent {
     this.router.navigate(['/']);
   }
 }
-

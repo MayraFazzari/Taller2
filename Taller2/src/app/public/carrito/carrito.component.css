@@ -82,3 +82,17 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
+.img-carrito {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.carrito-vacio {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #777;
+  padding: 2rem;
+}
