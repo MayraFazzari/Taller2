@@ -7,11 +7,11 @@
 
      <ng-container *ngIf="usuario; else noLogin">
       <span style="color: white;" >Hola, {{ usuario.nombre }}!</span>
-      <a (click)="cerrarSesion()" style="cursor: pointer; background-color: white; color: black; padding: 0.5em; border-radius: 0.3em;" >Cerrar sesión</a>
+      <a (click)="cerrarSesion()" class="cerrar-sesion" style="color: black;" >Cerrar sesión</a>
     </ng-container>
 
     <a routerLink="/productos">Productos</a>
-    <a routerLink="/carrito">🛒Carrito</a>
+    <a routerLink="/carrito" class="carrito">🛒Carrito <span *ngIf="cantidadProductos > 0" class="cant-productos">{{ cantidadProductos }}</span> </a>
 
     <ng-template #noLogin>
       <a [routerLink]="['/usuarios/signin']">Iniciar Sesión</a>

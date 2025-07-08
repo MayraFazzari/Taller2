@@ -41,12 +41,16 @@
 }
 
 .btn-eliminar {
-  background-color: red;
+  background-color: black;
   color: white;
   border: none;
   padding: 0.3rem 0.8rem;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.btn-eliminar:hover {
+  background-color: darkred;
 }
 
 .carrito-total {
@@ -64,7 +68,7 @@
 }
 
 .btn-cant {
-  background-color: rgb(19, 19, 19);
+  background-color: black;
   color: white;
   border: none;
   padding: 0.3rem 0.6rem;
@@ -75,12 +79,17 @@
 
 .btn-finalizar {
   margin-top: 1rem;
-  background-color: black;
+  background-color: #c71585;
   color: white;
   padding: 1rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.btn-cant:hover,
+.btn-finalizar:hover {
+  background-color: #a5006d;
 }
 
 .img-carrito {

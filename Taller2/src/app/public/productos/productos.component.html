@@ -7,58 +7,58 @@
       <div class="filter-group">
         <strong>Categoría</strong><br />
         <label>
-          <input 
-            type="checkbox" 
-            (change)="onCategoriaChange($event, 'labial')" 
+          <input
+            type="checkbox"
+            (change)="onCategoriaChange($event, 'labial')"
             [checked]="categoriasSeleccionadas.has('labial')" />
           Labiales
         </label><br />
         <label>
-          <input 
-            type="checkbox" 
-            (change)="onCategoriaChange($event, 'bases')" 
+          <input
+            type="checkbox"
+            (change)="onCategoriaChange($event, 'bases')"
             [checked]="categoriasSeleccionadas.has('bases')" />
           Bases
         </label><br />
         <label>
-          <input 
-            type="checkbox" 
-            (change)="onCategoriaChange($event, 'corrector')" 
+          <input
+            type="checkbox"
+            (change)="onCategoriaChange($event, 'corrector')"
             [checked]="categoriasSeleccionadas.has('corrector')" />
           Correctores
         </label><br />
         <label>
-          <input 
-            type="checkbox" 
-            (change)="onCategoriaChange($event, 'contorno')" 
+          <input
+            type="checkbox"
+            (change)="onCategoriaChange($event, 'contorno')"
             [checked]="categoriasSeleccionadas.has('contorno')" />
           Contornos
         </label><br />
         <label>
-          <input 
-            type="checkbox" 
-            (change)="onCategoriaChange($event, 'rimel')" 
+          <input
+            type="checkbox"
+            (change)="onCategoriaChange($event, 'rimel')"
             [checked]="categoriasSeleccionadas.has('rimel')" />
           Rimels
         </label><br />
         <label>
-          <input 
-            type="checkbox" 
-            (change)="onCategoriaChange($event, 'brochas')" 
+          <input
+            type="checkbox"
+            (change)="onCategoriaChange($event, 'brochas')"
             [checked]="categoriasSeleccionadas.has('brochas')" />
           Brochas de Maquillaje
         </label><br />
         <label>
-          <input 
-            type="checkbox" 
-            (change)="onCategoriaChange($event, 'delineador')" 
+          <input
+            type="checkbox"
+            (change)="onCategoriaChange($event, 'delineador')"
             [checked]="categoriasSeleccionadas.has('delineador')" />
           Delineadores de ojos
         </label><br />
         <label>
-          <input 
-            type="checkbox" 
-            (change)="onCategoriaChange($event, 'polvo')" 
+          <input
+            type="checkbox"
+            (change)="onCategoriaChange($event, 'polvo')"
             [checked]="categoriasSeleccionadas.has('polvo')" />
           Polvos
         </label>
@@ -68,18 +68,18 @@
     <div class="filter-group">
   <strong>Ordenar por</strong><br />
   <label>
-    <input 
-      type="radio" 
-      name="orden" 
-      (change)="ordenarProductos('menor')" 
+    <input
+      type="radio"
+      name="orden"
+      (change)="ordenarProductos('menor')"
       [checked]="ordenSeleccionado === 'menor'" />
     Precio: menor a mayor
   </label><br />
   <label>
-    <input 
-      type="radio" 
-      name="orden" 
-      (change)="ordenarProductos('mayor')" 
+    <input
+      type="radio"
+      name="orden"
+      (change)="ordenarProductos('mayor')"
       [checked]="ordenSeleccionado === 'mayor'" />
     Precio: mayor a menor
   </label>
@@ -92,7 +92,7 @@
         <h3>{{ producto.nombre }}</h3>
         <p>{{ producto.descripcion }}</p>
         <p><strong>$ {{ producto.precio }}</strong></p>
-       <button (click)="agregarAlCarrito(producto)" style="background-color: #d63384; color: white; padding: 1em; border-radius: 0.7em; border: none; outline: none;"> 🛒 Agregar al carrito</button>
+       <button (click)="agregarAlCarrito(producto)" class="btn-carrito"> 🛒 Agregar al carrito</button>
       </div>
     </section>
   </div>

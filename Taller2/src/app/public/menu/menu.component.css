@@ -31,3 +31,30 @@
 .navbar-links a:hover {
   text-decoration: underline;
 }
+
+.carrito {
+  position: relative;
+  margin-left: 1rem;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.cant-productos {
+  position: absolute;
+  top: -6px;
+  right: -12px;
+  background-color: #d63384;
+  color: white;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+.cerrar-sesion {
+  cursor: pointer;
+  background-color: #ffffff;
+  color: black;
+  padding: 0.5em;
+  border-radius: 0.3em;
+}

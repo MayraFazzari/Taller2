@@ -11,6 +11,7 @@ import { Router, RouterModule } from '@angular/router';
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css']
 })
+
 export class ProductosComponent implements OnInit, OnDestroy {
   productos: any[] = [];
   productosFiltrados: any[] = [];
@@ -92,10 +93,12 @@ export class ProductosComponent implements OnInit, OnDestroy {
     }
 
     this.carritoService.agregarProducto(usuario.email, producto).subscribe({
-      next: res => alert(res.msg),
+      next: res => {
+      this.carritoService.actualizarCantidadProducto(usuario.email);
+    },
       error: () => alert('Error al agregar al carrito')
-    });
-  }
+      });
+    }
 
   ngOnDestroy(): void {
     localStorage.removeItem('categoriasSeleccionadas');
