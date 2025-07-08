@@ -79,7 +79,7 @@
 
 .btn-finalizar {
   margin-top: 1rem;
-  background-color: #c71585;
+  background-color: black;
   color: white;
   padding: 1rem;
   border: none;
@@ -89,7 +89,8 @@
 
 .btn-cant:hover,
 .btn-finalizar:hover {
-  background-color: #a5006d;
+  background-color: #c71585;
+  color:white;
 }
 
 .img-carrito {
