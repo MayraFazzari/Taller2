@@ -1,20 +1,26 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { CarritoService } from '../../services/carrito.service';
-import { Router, RouterModule } from '@angular/router';
+import { CarritoService } from '../../services/carrito.service'
+import { Router, RouterModule  } from '@angular/router'
+import { FormsModule } from '@angular/forms'; // NUEVO
 
 @Component({
   selector: 'app-productos',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, RouterModule],
+  imports: [CommonModule, HttpClientModule, RouterModule, FormsModule], // FormsModule agregado
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css']
 })
-export class ProductosComponent implements OnInit, OnDestroy {
+export class ProductosComponent implements OnInit {
   productos: any[] = [];
   productosFiltrados: any[] = [];
   categoriasSeleccionadas: Set<string> = new Set();
+
+  // NUEVO:
+  marcasSeleccionadas: Set<string> = new Set();
+  nombreBuscado: string = '';
+
   ordenSeleccionado: string = '';
 
   constructor(private http: HttpClient, private carritoService: CarritoService, private router: Router) {}
@@ -23,30 +29,8 @@ export class ProductosComponent implements OnInit, OnDestroy {
     this.http.get<any[]>('http://localhost:5000/productos')
       .subscribe(data => {
         this.productos = data;
-
-        const categoriasGuardadas = JSON.parse(localStorage.getItem('categoriasSeleccionadas') || '[]');
-        const ordenGuardado = localStorage.getItem('ordenSeleccionado') || '';
-
-        this.categoriasSeleccionadas = new Set(categoriasGuardadas);
-
-        if (this.categoriasSeleccionadas.size > 0) {
-          this.productosFiltrados = this.productos.filter(p =>
-            this.categoriasSeleccionadas.has(p.clasificacion.toLowerCase())
-          );
-        } else {
-          this.productosFiltrados = this.productos;
-        }
-
-        if (ordenGuardado) {
-          this.ordenSeleccionado = ordenGuardado;
-          this.ordenarProductos(ordenGuardado, false);
-        }
+        this.productosFiltrados = data;  // Mostrar todos al inicio
       });
-  }
-
-  onCategoriaChange(event: Event, categoria: string): void {
-    const checked = (event.target as HTMLInputElement).checked;
-    this.filtrarPorCategoria(categoria, checked);
   }
 
   filtrarPorCategoria(categoria: string, checked: boolean): void {
@@ -56,31 +40,48 @@ export class ProductosComponent implements OnInit, OnDestroy {
       this.categoriasSeleccionadas.delete(categoria);
     }
 
-    localStorage.setItem('categoriasSeleccionadas', JSON.stringify([...this.categoriasSeleccionadas]));
-
-    if (this.categoriasSeleccionadas.size === 0) {
-      this.productosFiltrados = this.productos;
-    } else {
-      this.productosFiltrados = this.productos.filter(p =>
-        this.categoriasSeleccionadas.has(p.clasificacion.toLowerCase())
-      );
-    }
-
-    if (this.ordenSeleccionado) {
-      this.ordenarProductos(this.ordenSeleccionado, false);
-    }
+    this.aplicarFiltros(); // ACTUALIZADO: uso esta función común a todos los filtros
   }
 
-  ordenarProductos(orden: string, guardar: boolean = true): void {
-    this.ordenSeleccionado = orden;
+  onCategoriaChange(event: Event, categoria: string): void {
+    const checked = (event.target as HTMLInputElement).checked;
+    this.filtrarPorCategoria(categoria, checked);
+  }
 
-    if (guardar) {
-      localStorage.setItem('ordenSeleccionado', orden);
+  // NUEVO:
+  onMarcaChange(event: Event, marca: string): void {
+    const checked = (event.target as HTMLInputElement).checked;
+    if (checked) {
+      this.marcasSeleccionadas.add(marca.toLowerCase());
+    } else {
+      this.marcasSeleccionadas.delete(marca.toLowerCase());
     }
+    this.aplicarFiltros();
+  }
 
-    this.productosFiltrados.sort((a, b) => {
-      return orden === 'menor' ? a.precio - b.precio : b.precio - a.precio;
-    });
+  // NUEVO:
+  onBuscarNombre(): void {
+    this.aplicarFiltros();
+  }
+
+  ordenarProductos(orden: string): void {
+    this.ordenSeleccionado = orden;
+    this.aplicarFiltros(); // ACTUALIZADO
+  }
+
+  // NUEVO y centraliza todos los filtros:
+  aplicarFiltros(): void {
+    this.productosFiltrados = this.productos
+      .filter(p =>
+        (this.categoriasSeleccionadas.size === 0 || this.categoriasSeleccionadas.has(p.clasificacion.toLowerCase())) &&
+        (this.marcasSeleccionadas.size === 0 || this.marcasSeleccionadas.has(p.marca?.toLowerCase())) &&
+        (p.nombre.toLowerCase().includes(this.nombreBuscado.toLowerCase()))
+      )
+      .sort((a, b) => {
+        if (this.ordenSeleccionado === 'menor') return a.precio - b.precio;
+        if (this.ordenSeleccionado === 'mayor') return b.precio - a.precio;
+        return 0;
+      });
   }
 
   agregarAlCarrito(producto: any): void {
@@ -95,10 +96,5 @@ export class ProductosComponent implements OnInit, OnDestroy {
       next: res => alert(res.msg),
       error: () => alert('Error al agregar al carrito')
     });
-  }
-
-  ngOnDestroy(): void {
-    localStorage.removeItem('categoriasSeleccionadas');
-    localStorage.removeItem('ordenSeleccionado');
   }
 }
