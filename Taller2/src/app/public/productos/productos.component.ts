@@ -3,7 +3,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { CarritoService } from '../../services/carrito.service'
 import { Router, RouterModule  } from '@angular/router'
-import { FormsModule } from '@angular/forms'; // NUEVO
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-productos',
@@ -17,7 +17,7 @@ export class ProductosComponent implements OnInit {
   productosFiltrados: any[] = [];
   categoriasSeleccionadas: Set<string> = new Set();
 
-  // NUEVO:
+ 
   marcasSeleccionadas: Set<string> = new Set();
   nombreBuscado: string = '';
 
@@ -29,7 +29,7 @@ export class ProductosComponent implements OnInit {
     this.http.get<any[]>('http://localhost:5000/productos')
       .subscribe(data => {
         this.productos = data;
-        this.productosFiltrados = data;  // Mostrar todos al inicio
+        this.productosFiltrados = data;  
       });
   }
 
@@ -40,7 +40,7 @@ export class ProductosComponent implements OnInit {
       this.categoriasSeleccionadas.delete(categoria);
     }
 
-    this.aplicarFiltros(); // ACTUALIZADO: uso esta función común a todos los filtros
+    this.aplicarFiltros(); 
   }
 
   onCategoriaChange(event: Event, categoria: string): void {
@@ -48,7 +48,7 @@ export class ProductosComponent implements OnInit {
     this.filtrarPorCategoria(categoria, checked);
   }
 
-  // NUEVO:
+  
   onMarcaChange(event: Event, marca: string): void {
     const checked = (event.target as HTMLInputElement).checked;
     if (checked) {
@@ -66,10 +66,10 @@ export class ProductosComponent implements OnInit {
 
   ordenarProductos(orden: string): void {
     this.ordenSeleccionado = orden;
-    this.aplicarFiltros(); // ACTUALIZADO
+    this.aplicarFiltros(); 
   }
 
-  // NUEVO y centraliza todos los filtros:
+
   aplicarFiltros(): void {
     this.productosFiltrados = this.productos
       .filter(p =>
