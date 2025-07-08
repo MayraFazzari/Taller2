@@ -2,7 +2,7 @@
   <h2>Productos</h2>
   <div class="products">
     <aside class="filters">
-      
+
       <div class="filter-group">
         <strong>Buscar por nombre</strong><br />
         <input
@@ -16,7 +16,7 @@
 
       <h4>Filtrar por</h4>
 
-     
+
       <div class="filter-group">
         <strong>Categoría</strong><br />
         <label>
@@ -77,7 +77,7 @@
         </label>
       </div>
 
-      
+
       <div class="filter-group">
         <strong>Marca</strong><br />
         <label>
@@ -100,25 +100,25 @@
       <div class="filter-group">
         <strong>Ordenar por</strong><br />
         <label>
-          <input 
-            type="radio" 
-            name="orden" 
-            (change)="ordenarProductos('menor')" 
+          <input
+            type="radio"
+            name="orden"
+            (change)="ordenarProductos('menor')"
             [checked]="ordenSeleccionado === 'menor'" />
           Precio: menor a mayor
         </label><br />
         <label>
-          <input 
-            type="radio" 
-            name="orden" 
-            (change)="ordenarProductos('mayor')" 
+          <input
+            type="radio"
+            name="orden"
+            (change)="ordenarProductos('mayor')"
             [checked]="ordenSeleccionado === 'mayor'" />
           Precio: mayor a menor
         </label>
       </div>
     </aside>
 
-   
+
     <section class="products-list">
       <div *ngFor="let producto of productosFiltrados" class="product-card" style="background-color: white;">
         <img [src]="'http://localhost:5000' + producto.imagen" alt="{{ producto.nombre }}" />
