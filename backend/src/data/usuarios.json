@@ -4,7 +4,18 @@
     "password": "1234",
     "nombre": "Mayra",
     "apellido": "Fazzari",
-    "direccion": "Mi casa 123"
+    "direccion": "Mi casa 123",
+    "carrito": [
+      {
+        "id": 1,
+        "nombre": "Labial Mate Rosa",
+        "descripcion": "Labial de larga duración",
+        "clasificacion": "Labial",
+        "precio": 3200,
+        "imagen": "/public/imagenes/labial1.jpg",
+        "cantidad": 2
+      }
+    ]
   },
   {
     "email": "fraganciasfg2024@gmail.com",

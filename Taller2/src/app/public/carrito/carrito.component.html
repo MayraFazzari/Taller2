@@ -2,9 +2,10 @@
   <h1>Carrito de Compras</h1>
 
   <div class="carrito-tabla">
-    <table>
+    <table *ngIf="carrito.length > 0; else carritoVacio">
       <thead>
         <tr>
+          <th>Imagen</th>
           <th>Producto</th>
           <th>Precio</th>
           <th>Cantidad</th>
@@ -13,24 +14,34 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <tr *ngFor="let item of carrito">
+        <tr *ngFor="let item of carrito">
+          <td><img [src]="'http://localhost:5000' + item.imagen" alt="{{ item.nombre }}" class="img-carrito" /></td>
           <td>{{ item.nombre }}</td>
-          <td>${{ item.precio }}</td>
-          <td>
-            <button (click)="cambiarCantidad(item, -1)" class="btn-cant">-</button>
-              {{ item.cantidad }}
-            <button (click)="cambiarCantidad(item, 1)" class="btn-cant">+</button>
+          <td>$ {{ item.precio }}</td>
+          <td class="cantidad">
+            <button (click)="cambiarCantidad(item, -1)" class="btn-cant">➖</button>
+            <span>{{ item.cantidad }}</span>
+            <button (click)="cambiarCantidad(item, 1)" class="btn-cant">➕</button>
           </td>
-          <td>${{ item.precio * item.cantidad }}</td>
-          <td><button (click)="eliminarItem(item)" class="btn-eliminar">Eliminar</button></td>
+          <td>$ {{ item.precio * item.cantidad }}</td>
+          <td>
+            <button (click)="eliminarItem(item)" class="btn-eliminar">🗑️ Eliminar</button>
+          </td>
         </tr>
       </tbody>
     </table>
+
+    <!-- Si el carrito está vacío -->
+    <ng-template #carritoVacio>
+      <p class="carrito-vacio">Tu carrito está vacío 😢</p>
+    </ng-template>
   </div>
 
-  <div class="carrito-total">
-    <p><strong>Total:</strong> ${{ getTotal() }}</p>
-    <button class="btn-finalizar">Finalizar Compra</button>
+  <!-- Total debajo -->
+  <div class="carrito-total" *ngIf="carrito.length > 0">
+    <div class="total-box">
+      <p><strong>Total:</strong> $ {{ getTotal() }}</p>
+      <button class="btn-finalizar">Finalizar Compra</button>
+    </div>
   </div>
 </div>
