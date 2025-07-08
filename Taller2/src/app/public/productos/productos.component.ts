@@ -3,17 +3,16 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { CarritoService } from '../../services/carrito.service'
 import { Router, RouterModule  } from '@angular/router'
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'; 
 
 @Component({
   selector: 'app-productos',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, RouterModule, FormsModule], // FormsModule agregado
+  imports: [CommonModule, HttpClientModule, RouterModule, FormsModule], 
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css']
 })
-
-export class ProductosComponent implements OnInit, OnDestroy {
+export class ProductosComponent implements OnInit {
   productos: any[] = [];
   productosFiltrados: any[] = [];
   categoriasSeleccionadas: Set<string> = new Set();
@@ -94,15 +93,8 @@ export class ProductosComponent implements OnInit, OnDestroy {
     }
 
     this.carritoService.agregarProducto(usuario.email, producto).subscribe({
-      next: res => {
-      this.carritoService.actualizarCantidadProducto(usuario.email);
-    },
+      next: res => alert(res.msg),
       error: () => alert('Error al agregar al carrito')
-      });
-    }
-
-  ngOnDestroy(): void {
-    localStorage.removeItem('categoriasSeleccionadas');
-    localStorage.removeItem('ordenSeleccionado');
+    });
   }
 }
