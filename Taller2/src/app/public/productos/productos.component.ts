@@ -12,7 +12,8 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css']
 })
-export class ProductosComponent implements OnInit {
+
+export class ProductosComponent implements OnInit, OnDestroy {
   productos: any[] = [];
   productosFiltrados: any[] = [];
   categoriasSeleccionadas: Set<string> = new Set();
@@ -93,8 +94,15 @@ export class ProductosComponent implements OnInit {
     }
 
     this.carritoService.agregarProducto(usuario.email, producto).subscribe({
-      next: res => alert(res.msg),
+      next: res => {
+      this.carritoService.actualizarCantidadProducto(usuario.email);
+    },
       error: () => alert('Error al agregar al carrito')
-    });
+      });
+    }
+
+  ngOnDestroy(): void {
+    localStorage.removeItem('categoriasSeleccionadas');
+    localStorage.removeItem('ordenSeleccionado');
   }
 }

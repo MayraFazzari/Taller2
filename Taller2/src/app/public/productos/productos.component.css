@@ -109,4 +109,16 @@
   padding: 2em;
   border-radius: 8px;
 
+.btn-carrito {
+  background-color: #c71585;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-carrito:hover {
+  background-color: #a5006d;
 }

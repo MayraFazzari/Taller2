@@ -37,27 +37,29 @@ export class CarritoComponent implements OnInit {
   }
 
   cambiarCantidad(item: any, cambio: number): void {
-  const nuevaCantidad = item.cantidad + cambio;
+    const nuevaCantidad = item.cantidad + cambio;
 
-  if (nuevaCantidad <= 0) {
-    this.eliminarItem(item);
-    return;
+    if (nuevaCantidad <= 0) {
+      this.eliminarItem(item);
+      return;
+    }
+
+    this.carritoService.actualizarCantidad(this.email, item.id, nuevaCantidad).subscribe({
+      next: () => {
+        this.carritoService.actualizarCantidadProducto(this.email);
+        item.cantidad = nuevaCantidad;
+      },
+      error: () => alert('Error al actualizar cantidad')
+    });
   }
 
-  this.carritoService.actualizarCantidad(this.email, item.id, nuevaCantidad).subscribe({
-    next: () => {
-      item.cantidad = nuevaCantidad;
-    },
-    error: () => alert('Error al actualizar cantidad')
-  });
-}
-
-eliminarItem(item: any): void {
-  this.carritoService.eliminarProducto(this.email, item.id).subscribe({
-    next: () => {
-      this.carrito = this.carrito.filter(p => p.id !== item.id);
-    },
-    error: () => alert('Error al eliminar el producto')
-  });
-}
+  eliminarItem(item: any): void {
+    this.carritoService.eliminarProducto(this.email, item.id).subscribe({
+      next: () => {
+        this.carritoService.actualizarCantidadProducto(this.email);
+        this.carrito = this.carrito.filter(p => p.id !== item.id);
+      },
+      error: () => alert('Error al eliminar el producto')
+    });
+  }
 }
