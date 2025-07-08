@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { CarritoService } from '../../services/carrito.service'
@@ -17,7 +17,7 @@ export class ProductosComponent implements OnInit {
   productosFiltrados: any[] = [];
   categoriasSeleccionadas: Set<string> = new Set();
 
- 
+
   marcasSeleccionadas: Set<string> = new Set();
   nombreBuscado: string = '';
 
@@ -29,7 +29,7 @@ export class ProductosComponent implements OnInit {
     this.http.get<any[]>('http://localhost:5000/productos')
       .subscribe(data => {
         this.productos = data;
-        this.productosFiltrados = data;  
+        this.productosFiltrados = data;
       });
   }
 
@@ -40,7 +40,7 @@ export class ProductosComponent implements OnInit {
       this.categoriasSeleccionadas.delete(categoria);
     }
 
-    this.aplicarFiltros(); 
+    this.aplicarFiltros();
   }
 
   onCategoriaChange(event: Event, categoria: string): void {
@@ -48,7 +48,7 @@ export class ProductosComponent implements OnInit {
     this.filtrarPorCategoria(categoria, checked);
   }
 
-  
+
   onMarcaChange(event: Event, marca: string): void {
     const checked = (event.target as HTMLInputElement).checked;
     if (checked) {
@@ -66,7 +66,7 @@ export class ProductosComponent implements OnInit {
 
   ordenarProductos(orden: string): void {
     this.ordenSeleccionado = orden;
-    this.aplicarFiltros(); 
+    this.aplicarFiltros();
   }
 
 

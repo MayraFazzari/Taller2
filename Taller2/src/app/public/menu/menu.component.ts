@@ -33,6 +33,7 @@ export class MenuComponent {
 
   cerrarSesion(): void {
     this.authService.cerrarSesion();
+    this.carritoService.actualizarCantidadProducto('');
     this.router.navigate(['/']);
   }
 }
