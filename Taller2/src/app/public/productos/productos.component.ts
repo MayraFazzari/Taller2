@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { CarritoService } from '../../services/carrito.service'
@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-productos',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, RouterModule, FormsModule], // FormsModule agregado
+  imports: [CommonModule, HttpClientModule, RouterModule, FormsModule],
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css']
 })
@@ -18,7 +18,7 @@ export class ProductosComponent implements OnInit, OnDestroy {
   productosFiltrados: any[] = [];
   categoriasSeleccionadas: Set<string> = new Set();
 
- 
+
   marcasSeleccionadas: Set<string> = new Set();
   nombreBuscado: string = '';
 
@@ -30,7 +30,7 @@ export class ProductosComponent implements OnInit, OnDestroy {
     this.http.get<any[]>('http://localhost:5000/productos')
       .subscribe(data => {
         this.productos = data;
-        this.productosFiltrados = data;  
+        this.productosFiltrados = data;
       });
   }
 
@@ -41,7 +41,7 @@ export class ProductosComponent implements OnInit, OnDestroy {
       this.categoriasSeleccionadas.delete(categoria);
     }
 
-    this.aplicarFiltros(); 
+    this.aplicarFiltros();
   }
 
   onCategoriaChange(event: Event, categoria: string): void {
@@ -49,7 +49,7 @@ export class ProductosComponent implements OnInit, OnDestroy {
     this.filtrarPorCategoria(categoria, checked);
   }
 
-  
+
   onMarcaChange(event: Event, marca: string): void {
     const checked = (event.target as HTMLInputElement).checked;
     if (checked) {
@@ -67,7 +67,7 @@ export class ProductosComponent implements OnInit, OnDestroy {
 
   ordenarProductos(orden: string): void {
     this.ordenSeleccionado = orden;
-    this.aplicarFiltros(); 
+    this.aplicarFiltros();
   }
 
 

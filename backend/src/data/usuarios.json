@@ -79,5 +79,24 @@
     "nombre": "usuario",
     "apellido": "user",
     "direccion": "calle"
+  },
+  {
+    "email": "mica@gmail.com",
+    "password": "12345",
+    "nombre": "Mica",
+    "apellido": "Mendez",
+    "direccion": "Calle Falsa 123",
+    "carrito": [
+      {
+        "id": 1,
+        "nombre": "Labial Mate Rosa",
+        "descripcion": "Labial de larga duración",
+        "clasificacion": "Labial",
+        "precio": 3200,
+        "imagen": "/public/imagenes/labial1.jpg",
+        "marca": "Dapop",
+        "cantidad": 2
+      }
+    ]
   }
 ]
