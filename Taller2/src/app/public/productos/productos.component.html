@@ -121,7 +121,7 @@
 
     <section class="products-list">
       <div *ngFor="let producto of productosFiltrados" class="product-card" style="background-color: white;">
-        <img [src]="'http://localhost:5000' + producto.imagen" alt="{{ producto.nombre }}" />
+        <img [src]="'http://localhost:5000' + producto.imagen" alt="{{ producto.nombre }}"  width="300" height="180"  />
         <h3>{{ producto.nombre }}</h3>
         <p>{{ producto.descripcion }}</p>
         <p><strong>$ {{ producto.precio }}</strong></p>

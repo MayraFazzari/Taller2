@@ -65,6 +65,28 @@
     "password": "Mayra123",
     "nombre": "mayra",
     "apellido": "fazzari",
-    "direccion": "illia 5488"
+    "direccion": "illia 5488",
+    "carrito": [
+      {
+        "id": 4,
+        "nombre": "Corrector cremoso",
+        "descripcion": "Corrector en barra",
+        "clasificacion": "corrector",
+        "precio": 4000,
+        "imagen": "/public/imagenes/corrector1.jpg",
+        "marca": "Rimmel",
+        "cantidad": 1
+      },
+      {
+        "id": 2,
+        "nombre": "Labial Rojo",
+        "descripcion": "Labial liquido rojo",
+        "clasificacion": "Labial",
+        "precio": 4500,
+        "imagen": "/public/imagenes/labial2.jpg",
+        "marca": "Natura",
+        "cantidad": 1
+      }
+    ]
   }
 ]
