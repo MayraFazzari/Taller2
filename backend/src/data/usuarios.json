@@ -5,18 +5,7 @@
     "nombre": "Mayra",
     "apellido": "Fazzari",
     "direccion": "Mi casa 123",
-    "carrito": [
-      {
-        "id": 3,
-        "nombre": "Labial Rose",
-        "descripcion": "Labial Rose",
-        "clasificacion": "Labial",
-        "precio": 3500,
-        "imagen": "/public/imagenes/labial3.jpg",
-        "marca": "Mac",
-        "cantidad": 1
-      }
-    ]
+    "carrito": []
   },
   {
     "email": "fraganciasfg2024@gmail.com",
@@ -37,7 +26,8 @@
     "password": "ailen123",
     "nombre": "ailen",
     "apellido": "fazzari",
-    "direccion": "illia2044"
+    "direccion": "illia2044",
+    "carrito": []
   },
   {
     "email": "marcela@gmail.com",
@@ -88,5 +78,12 @@
         "cantidad": 1
       }
     ]
+  },
+  {
+    "email": "mica@gmail.com",
+    "password": "Mica1234",
+    "nombre": "Mica",
+    "apellido": "Mendez",
+    "direccion": "qwetyu"
   }
 ]

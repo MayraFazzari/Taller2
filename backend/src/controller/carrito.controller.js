@@ -28,3 +28,4 @@ export const eliminarDelCarrito = (req, res) => {
   const respuesta = eliminarProductoDelCarrito(email, parseInt(productoId));
   res.status(respuesta.status).json({ msg: respuesta.msg });
 };
+//Agregar enviroments y service en productos

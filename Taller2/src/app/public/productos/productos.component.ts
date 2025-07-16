@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { CarritoService } from '../../services/carrito.service';
 import { Router, RouterModule } from '@angular/router';
@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-productos',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css']
 })
@@ -43,7 +43,8 @@ export class ProductosComponent implements OnInit, OnDestroy {
     });
   }
 
-  filtrarPorCategoria(categoria: string, checked: boolean): void {
+  onCategoriaChange(event: Event, categoria: string): void {
+    const checked = (event.target as HTMLInputElement).checked;
     if (checked) {
       this.categoriasSeleccionadas.add(categoria);
     } else {
@@ -51,11 +52,6 @@ export class ProductosComponent implements OnInit, OnDestroy {
     }
     localStorage.setItem('categoriasSeleccionadas', JSON.stringify([...this.categoriasSeleccionadas]));
     this.aplicarFiltros();
-  }
-
-  onCategoriaChange(event: Event, categoria: string): void {
-    const checked = (event.target as HTMLInputElement).checked;
-    this.filtrarPorCategoria(categoria, checked);
   }
 
   onMarcaChange(event: Event, marca: string): void {
