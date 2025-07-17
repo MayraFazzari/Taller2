@@ -5,7 +5,38 @@
     "nombre": "Mayra",
     "apellido": "Fazzari",
     "direccion": "Mi casa 123",
-    "carrito": []
+    "carrito": [
+      {
+        "id": 2,
+        "nombre": "Labial Rojo",
+        "descripcion": "Labial liquido rojo",
+        "clasificacion": "Labial",
+        "precio": 4500,
+        "imagen": "/public/imagenes/labial2.jpg",
+        "marca": "Natura",
+        "cantidad": 2
+      },
+      {
+        "id": 3,
+        "nombre": "Labial Rose",
+        "descripcion": "Labial Rose",
+        "clasificacion": "Labial",
+        "precio": 3500,
+        "imagen": "/public/imagenes/labial3.jpg",
+        "marca": "Mac",
+        "cantidad": 1
+      },
+      {
+        "id": 1,
+        "nombre": "Labial Mate Rosa",
+        "descripcion": "Labial de larga duración",
+        "clasificacion": "Labial",
+        "precio": 3200,
+        "imagen": "/public/imagenes/labial1.jpg",
+        "marca": "Dapop",
+        "cantidad": 1
+      }
+    ]
   },
   {
     "email": "fraganciasfg2024@gmail.com",
@@ -85,5 +116,40 @@
     "nombre": "Mica",
     "apellido": "Mendez",
     "direccion": "qwetyu"
+  },
+  {
+    "email": "mayrafazzari@gmail.com",
+    "password": "Mayrafazzari123",
+    "nombre": "mayra",
+    "apellido": "fazzari",
+    "direccion": "calle2"
+  },
+  {
+    "email": "mayra123@gmail.com",
+    "password": "Contraseñavalida1",
+    "nombre": "mayra",
+    "apellido": "fazzari",
+    "direccion": "calle3"
+  },
+  {
+    "email": "ailenfazzari@gmail.com",
+    "password": "Ailen123",
+    "nombre": "ailen",
+    "apellido": "fazzari",
+    "direccion": "calle4"
+  },
+  {
+    "email": "ailenfazzariclerici@gmail.com",
+    "password": "Ailenfazzari1",
+    "nombre": "ailen",
+    "apellido": "fazzari",
+    "direccion": "calle3"
+  },
+  {
+    "email": "marcela2@gmail.com",
+    "password": "Marcela1",
+    "nombre": "marcela",
+    "apellido": "clerici",
+    "direccion": "calle5"
   }
 ]

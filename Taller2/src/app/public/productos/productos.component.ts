@@ -1,103 +1,65 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CarritoService } from '../../services/carrito.service';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ProductosService } from '../../services/productos.service';
+import { CarritoService } from '../../services/carrito.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-productos',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, HttpClientModule],
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css']
 })
 export class ProductosComponent implements OnInit, OnDestroy {
-  productos: any[] = [];
   productosFiltrados: any[] = [];
-  categoriasSeleccionadas: Set<string> = new Set();
-  marcasSeleccionadas: Set<string> = new Set();
   nombreBuscado: string = '';
   ordenSeleccionado: string = '';
+  categoriasSeleccionadas: Set<string> = new Set();
+  marcasSeleccionadas: Set<string> = new Set();
 
-  constructor(private http: HttpClient, private carritoService: CarritoService, private router: Router) {}
+  private subscription: Subscription = new Subscription();
+
+  constructor(
+    private productosService: ProductosService,
+    private carritoService: CarritoService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.http.get<any[]>('http://localhost:5000/productos').subscribe(data => {
-      this.productos = data;
+    this.productosService.cargarProductos();
 
-      const categoriasGuardadas = JSON.parse(localStorage.getItem('categoriasSeleccionadas') || '[]');
-      const marcasGuardadas = JSON.parse(localStorage.getItem('marcasSeleccionadas') || '[]');
-      this.nombreBuscado = localStorage.getItem('nombreBuscado') || '';
-      this.ordenSeleccionado = localStorage.getItem('ordenSeleccionado') || '';
-
-      if (categoriasGuardadas.length > 0) {
-        this.categoriasSeleccionadas = new Set(categoriasGuardadas);
-      }
-
-      if (marcasGuardadas.length > 0) {
-        this.marcasSeleccionadas = new Set(marcasGuardadas.map((m: string) => m.toLowerCase()));
-      }
-
-      this.aplicarFiltros();
+    this.subscription = this.productosService.productosFiltrados$.subscribe(productos => {
+      this.productosFiltrados = productos;
     });
+
+    //  reflejar en la vista los valores actuales del servicio
+    this.nombreBuscado = this.productosService.nombreBuscado;
+    this.ordenSeleccionado = this.productosService.ordenSeleccionado;
+    this.categoriasSeleccionadas = this.productosService.categoriasSeleccionadas;
+    this.marcasSeleccionadas = this.productosService.marcasSeleccionadas;
+  }
+
+  onBuscarNombre(): void {
+    this.productosService.actualizarBusqueda(this.nombreBuscado);
   }
 
   onCategoriaChange(event: Event, categoria: string): void {
     const checked = (event.target as HTMLInputElement).checked;
-    if (checked) {
-      this.categoriasSeleccionadas.add(categoria);
-    } else {
-      this.categoriasSeleccionadas.delete(categoria);
-    }
-    localStorage.setItem('categoriasSeleccionadas', JSON.stringify([...this.categoriasSeleccionadas]));
-    this.aplicarFiltros();
+    this.productosService.actualizarCategoria(categoria, checked);
   }
 
   onMarcaChange(event: Event, marca: string): void {
     const checked = (event.target as HTMLInputElement).checked;
-    if (checked) {
-      this.marcasSeleccionadas.add(marca.toLowerCase());
-    } else {
-      this.marcasSeleccionadas.delete(marca.toLowerCase());
-    }
-    localStorage.setItem('marcasSeleccionadas', JSON.stringify([...this.marcasSeleccionadas]));
-    this.aplicarFiltros();
-  }
-
-  onBuscarNombre(): void {
-    localStorage.setItem('nombreBuscado', this.nombreBuscado);
-    this.aplicarFiltros();
+    this.productosService.actualizarMarca(marca, checked);
   }
 
   ordenarProductos(orden: string): void {
     this.ordenSeleccionado = orden;
-    localStorage.setItem('ordenSeleccionado', orden);
-    this.aplicarFiltros();
-  }
-
-  aplicarFiltros(): void {
-    this.productosFiltrados = this.productos
-      .filter(p => {
-        const clasificacion = (p.clasificacion || '').toLowerCase();
-        const marca = (p.marca || '').toLowerCase();
-        const nombre = (p.nombre || '').toLowerCase();
-
-        const coincideCategoria =
-          this.categoriasSeleccionadas.size === 0 || this.categoriasSeleccionadas.has(clasificacion);
-
-        const coincideMarca =
-          this.marcasSeleccionadas.size === 0 || this.marcasSeleccionadas.has(marca);
-
-        const coincideNombre = nombre.includes(this.nombreBuscado.toLowerCase());
-
-        return coincideCategoria && coincideMarca && coincideNombre;
-      })
-      .sort((a, b) => {
-        if (this.ordenSeleccionado === 'menor') return a.precio - b.precio;
-        if (this.ordenSeleccionado === 'mayor') return b.precio - a.precio;
-        return 0;
-      });
+    this.productosService.actualizarOrden(orden);
   }
 
   agregarAlCarrito(producto: any): void {
@@ -117,9 +79,8 @@ export class ProductosComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    localStorage.removeItem('categoriasSeleccionadas');
-    localStorage.removeItem('marcasSeleccionadas');
-    localStorage.removeItem('nombreBuscado');
-    localStorage.removeItem('ordenSeleccionado');
+    this.productosService.limpiarFiltros();
+    this.subscription.unsubscribe();
   }
+  
 }
