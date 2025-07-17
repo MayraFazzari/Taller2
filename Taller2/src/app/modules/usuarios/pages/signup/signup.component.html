@@ -1,7 +1,6 @@
 <div class="signup-container">
   <h2>Registrarse</h2>
 
-  <!-- Mensaje de éxito o error -->
   <div
     class="mensaje"
     [class.visible]="mensaje !== ''"
@@ -10,8 +9,7 @@
   >
     {{ mensaje }}
   </div>
-
-  <!-- Formulario de registro -->
+  
   <form [formGroup]="formulario" (ngSubmit)="registrarUsuario()">
     <label>Email:</label>
     <input type="email" formControlName="email" required />

@@ -5,13 +5,8 @@
 
       <div class="filter-group">
         <strong>Buscar por nombre</strong><br />
-        <input
-          type="text"
-          [(ngModel)]="nombreBuscado"
-          (input)="onBuscarNombre()"
-          placeholder="Ej: Labial rojo"
-          style="width: 100%; padding: 0.3em; margin-bottom: 1em;"
-        />
+        <input type="text" [(ngModel)]="nombreBuscado" (input)="onBuscarNombre()" placeholder="Ej: Labial rojo"
+          style="width: 100%; padding: 0.3em; margin-bottom: 1em;" />
       </div>
 
       <h4>Filtrar por</h4>
@@ -20,58 +15,42 @@
       <div class="filter-group">
         <strong>Categoría</strong><br />
         <label>
-          <input
-            type="checkbox"
-            (change)="onCategoriaChange($event, 'labial')"
+          <input type="checkbox" (change)="onCategoriaChange($event, 'labial')"
             [checked]="categoriasSeleccionadas.has('labial')" />
           Labiales
         </label><br />
         <label>
-          <input
-            type="checkbox"
-            (change)="onCategoriaChange($event, 'bases')"
+          <input type="checkbox" (change)="onCategoriaChange($event, 'bases')"
             [checked]="categoriasSeleccionadas.has('bases')" />
           Bases
         </label><br />
         <label>
-          <input
-            type="checkbox"
-            (change)="onCategoriaChange($event, 'corrector')"
+          <input type="checkbox" (change)="onCategoriaChange($event, 'corrector')"
             [checked]="categoriasSeleccionadas.has('corrector')" />
           Correctores
         </label><br />
         <label>
-          <input
-            type="checkbox"
-            (change)="onCategoriaChange($event, 'contorno')"
+          <input type="checkbox" (change)="onCategoriaChange($event, 'contorno')"
             [checked]="categoriasSeleccionadas.has('contorno')" />
           Contornos
         </label><br />
         <label>
-          <input
-            type="checkbox"
-            (change)="onCategoriaChange($event, 'rimel')"
+          <input type="checkbox" (change)="onCategoriaChange($event, 'rimel')"
             [checked]="categoriasSeleccionadas.has('rimel')" />
           Rimels
         </label><br />
         <label>
-          <input
-            type="checkbox"
-            (change)="onCategoriaChange($event, 'brochas')"
+          <input type="checkbox" (change)="onCategoriaChange($event, 'brochas')"
             [checked]="categoriasSeleccionadas.has('brochas')" />
           Brochas de Maquillaje
         </label><br />
         <label>
-          <input
-            type="checkbox"
-            (change)="onCategoriaChange($event, 'delineador')"
+          <input type="checkbox" (change)="onCategoriaChange($event, 'delineador')"
             [checked]="categoriasSeleccionadas.has('delineador')" />
           Delineadores de ojos
         </label><br />
         <label>
-          <input
-            type="checkbox"
-            (change)="onCategoriaChange($event, 'polvo')"
+          <input type="checkbox" (change)="onCategoriaChange($event, 'polvo')"
             [checked]="categoriasSeleccionadas.has('polvo')" />
           Polvos
         </label>
@@ -81,37 +60,36 @@
       <div class="filter-group">
         <strong>Marca</strong><br />
         <label>
-          <input type="checkbox" (change)="onMarcaChange($event, 'Natura')" [checked]="marcasSeleccionadas.has('natura')"/> Natura
+          <input type="checkbox" (change)="onMarcaChange($event, 'Natura')"
+            [checked]="marcasSeleccionadas.has('natura')" /> Natura
         </label><br />
         <label>
-          <input type="checkbox" (change)="onMarcaChange($event, 'Dapop')" [checked]="marcasSeleccionadas.has('dapop')"/> Dapop
+          <input type="checkbox" (change)="onMarcaChange($event, 'Dapop')"
+            [checked]="marcasSeleccionadas.has('dapop')" /> Dapop
         </label><br />
         <label>
-          <input type="checkbox" (change)="onMarcaChange($event, 'Rimel')" [checked]="marcasSeleccionadas.has('rimel')"/> Rimel
+          <input type="checkbox" (change)="onMarcaChange($event, 'Rimel')"
+            [checked]="marcasSeleccionadas.has('rimel')" /> Rimel
         </label><br />
         <label>
-          <input type="checkbox" (change)="onMarcaChange($event, 'Renova')" [checked]="marcasSeleccionadas.has('renova')"/> Renova
+          <input type="checkbox" (change)="onMarcaChange($event, 'Renova')"
+            [checked]="marcasSeleccionadas.has('renova')" /> Renova
         </label><br />
         <label>
-          <input type="checkbox" (change)="onMarcaChange($event, 'Maybelline')" [checked]="marcasSeleccionadas.has('maybelline')"/> Maybelline
+          <input type="checkbox" (change)="onMarcaChange($event, 'Maybelline')"
+            [checked]="marcasSeleccionadas.has('maybelline')" /> Maybelline
         </label>
       </div>
 
       <div class="filter-group">
         <strong>Ordenar por</strong><br />
         <label>
-          <input
-            type="radio"
-            name="orden"
-            (change)="ordenarProductos('menor')"
+          <input type="radio" name="orden" (change)="ordenarProductos('menor')"
             [checked]="ordenSeleccionado === 'menor'" />
           Precio: menor a mayor
         </label><br />
         <label>
-          <input
-            type="radio"
-            name="orden"
-            (change)="ordenarProductos('mayor')"
+          <input type="radio" name="orden" (change)="ordenarProductos('mayor')"
             [checked]="ordenSeleccionado === 'mayor'" />
           Precio: mayor a menor
         </label>
@@ -120,16 +98,21 @@
 
 
     <section class="products-list">
-      <div *ngFor="let producto of productosFiltrados" class="product-card" style="background-color: white;">
-        <img [src]="'http://localhost:5000' + producto.imagen" alt="{{ producto.nombre }}"  width="300" height="180"  />
+      @for (producto of productosFiltrados; track producto.id) {
+      <div class="product-card" style="background-color: white;">
+        <img [src]="'http://localhost:5000' + producto.imagen" alt="{{ producto.nombre }}" width="300" height="180" />
         <h3>{{ producto.nombre }}</h3>
         <p>{{ producto.descripcion }}</p>
         <p><strong>$ {{ producto.precio }}</strong></p>
-       <button (click)="agregarAlCarrito(producto)" class="btn-carrito"> 🛒 Agregar al carrito</button>
+        <button (click)="agregarAlCarrito(producto)" class="btn-carrito"> 🛒 Agregar al carrito</button>
       </div>
-      <div *ngIf="productosFiltrados.length === 0" class="mensaje-vacio">
+      }
+      @if (productosFiltrados.length === 0) {
+      <div class="mensaje-vacio">
         🫣 No encontramos productos que coincidan con tu búsqueda.
       </div>
+      }
+
     </section>
   </div>
 </main>
