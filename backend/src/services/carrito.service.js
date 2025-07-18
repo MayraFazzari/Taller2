@@ -31,9 +31,9 @@ export function agregarProductoAlCarrito(email, producto) {
 
   const existente = usuario.carrito.find(p => p.id === producto.id)
   if (existente) {
-    existente.cantidad += 1
+    existente.cantidad += producto.cantidad ?? 1 
   } else {
-    usuario.carrito.push({ ...producto, cantidad: 1 })
+    usuario.carrito.push({ ...producto, cantidad: producto.cantidad ?? 1 })
   }
 
   guardarUsuarios(usuarios)

@@ -9,10 +9,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Servir imágenes
+
 app.use('/public', express.static('public'));
 
-// Rutas
+
 app.use('/api', userRoutes);
 app.use('/productos', productosRoutes);
 app.use('/api', carritoRoutes);

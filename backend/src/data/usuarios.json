@@ -7,13 +7,13 @@
     "direccion": "Mi casa 123",
     "carrito": [
       {
-        "id": 3,
-        "nombre": "Labial Rose",
-        "descripcion": "Labial Rose",
-        "clasificacion": "Labial",
-        "precio": 3500,
-        "imagen": "/public/imagenes/labial3.jpg",
-        "marca": "Mac",
+        "id": 5,
+        "nombre": "Corrector",
+        "descripcion": "Corrector NG",
+        "clasificacion": "Corrector",
+        "precio": 6000,
+        "imagen": "/public/imagenes/corrector2.jpg",
+        "marca": "Rimmel",
         "cantidad": 1
       }
     ]
@@ -37,7 +37,8 @@
     "password": "ailen123",
     "nombre": "ailen",
     "apellido": "fazzari",
-    "direccion": "illia2044"
+    "direccion": "illia2044",
+    "carrito": []
   },
   {
     "email": "marcela@gmail.com",
@@ -65,6 +66,70 @@
     "password": "Mayra123",
     "nombre": "mayra",
     "apellido": "fazzari",
-    "direccion": "illia 5488"
+    "direccion": "illia 5488",
+    "carrito": [
+      {
+        "id": 4,
+        "nombre": "Corrector cremoso",
+        "descripcion": "Corrector en barra",
+        "clasificacion": "corrector",
+        "precio": 4000,
+        "imagen": "/public/imagenes/corrector1.jpg",
+        "marca": "Rimmel",
+        "cantidad": 1
+      },
+      {
+        "id": 2,
+        "nombre": "Labial Rojo",
+        "descripcion": "Labial liquido rojo",
+        "clasificacion": "Labial",
+        "precio": 4500,
+        "imagen": "/public/imagenes/labial2.jpg",
+        "marca": "Natura",
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "email": "mica@gmail.com",
+    "password": "Mica1234",
+    "nombre": "Mica",
+    "apellido": "Mendez",
+    "direccion": "qwetyu"
+  },
+  {
+    "email": "mayrafazzari@gmail.com",
+    "password": "Mayrafazzari123",
+    "nombre": "mayra",
+    "apellido": "fazzari",
+    "direccion": "calle2"
+  },
+  {
+    "email": "mayra123@gmail.com",
+    "password": "Contraseñavalida1",
+    "nombre": "mayra",
+    "apellido": "fazzari",
+    "direccion": "calle3"
+  },
+  {
+    "email": "ailenfazzari@gmail.com",
+    "password": "Ailen123",
+    "nombre": "ailen",
+    "apellido": "fazzari",
+    "direccion": "calle4"
+  },
+  {
+    "email": "ailenfazzariclerici@gmail.com",
+    "password": "Ailenfazzari1",
+    "nombre": "ailen",
+    "apellido": "fazzari",
+    "direccion": "calle3"
+  },
+  {
+    "email": "marcela2@gmail.com",
+    "password": "Marcela1",
+    "nombre": "marcela",
+    "apellido": "clerici",
+    "direccion": "calle5"
   }
 ]

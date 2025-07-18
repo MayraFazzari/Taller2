@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -13,6 +13,8 @@ import { CommonModule } from '@angular/common';
 })
 export class SignupComponent {
   formulario: FormGroup;
+  mensaje: string = '';
+  mensajeTipo: 'exito' | 'error' | '' = '';
 
   constructor(
     private fb: FormBuilder,
@@ -20,11 +22,11 @@ export class SignupComponent {
     private router: Router
   ) {
     this.formulario = this.fb.group({
-      email: [''],
-      password: [''],
-      nombre: [''],
-      apellido: [''],
-      direccion: ['']
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      nombre: ['', Validators.required],
+      apellido: ['', Validators.required],
+      direccion: ['', Validators.required]
     });
   }
 
@@ -33,12 +35,25 @@ export class SignupComponent {
 
     this.http.post('http://localhost:5000/api/register', datos).subscribe({
       next: (res: any) => {
-        alert('Registro exitoso');
-        this.router.navigate(['/usuarios/signin']);
+        this.mensaje = 'Registro exitoso';
+        this.mensajeTipo = 'exito';
+
+        // Espera 1.5s y redirige
+        setTimeout(() => {
+          this.mensaje = '';
+          this.mensajeTipo = '';
+          this.router.navigate(['/usuarios/signin']);
+        }, 1500);
       },
       error: (err: any) => {
-        alert(err.error?.msg || 'Error al registrarse');
-        console.error(err);
+        this.mensaje = err.error?.msg || 'Error al registrarse';
+        this.mensajeTipo = 'error';
+
+        // Limpia mensaje después de 3s
+        setTimeout(() => {
+          this.mensaje = '';
+          this.mensajeTipo = '';
+        }, 3000);
       }
     });
   }
