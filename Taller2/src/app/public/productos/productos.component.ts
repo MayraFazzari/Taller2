@@ -86,9 +86,9 @@ export class ProductosComponent implements OnInit, OnDestroy {
   }
   const cantidad = this.getCantidad(producto.id);
   const productoConCantidad = { ...producto, cantidad };
-  this.carritoService.agregarProducto(usuario.email, productoConCantidad).subscribe({
+  this.carritoService.agregarProducto(productoConCantidad).subscribe({
     next: () => {
-      this.carritoService.actualizarCantidadProducto(usuario.email);
+      this.carritoService.actualizarCantidadProducto();
     },
     error: () => alert('Error al agregar al carrito')
   });

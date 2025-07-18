@@ -23,7 +23,7 @@ export class MenuComponent {
       this.usuario = u;
 
       if (this.usuario?.email) {
-        this.carritoService.actualizarCantidadProducto(this.usuario.email);
+        this.carritoService.actualizarCantidadProducto();
         this.carritoService.cantidad$.subscribe(cantidad => {
           this.cantidadProductos = cantidad;
         });
@@ -33,7 +33,7 @@ export class MenuComponent {
 
   cerrarSesion(): void {
     this.authService.cerrarSesion();
-    this.carritoService.actualizarCantidadProducto('');
+    this.carritoService.actualizarCantidadProducto();
     this.router.navigate(['/']);
   }
 }

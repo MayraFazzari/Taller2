@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, map } from 'rxjs';
 import { environment } from '../../environments/environment';
@@ -16,7 +16,7 @@ export class ProductosService {
   marcasSeleccionadas: Set<string> = new Set();
   ordenSeleccionado: string = '';
 
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   // productos desde el back
   cargarProductos() {
