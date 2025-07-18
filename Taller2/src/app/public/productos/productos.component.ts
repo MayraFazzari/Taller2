@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms'
 import { ProductosService } from '../../services/productos.service';
 import { CarritoService } from '../../services/carrito.service';
+import { ImageService } from '../../services/image.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -26,6 +27,7 @@ export class ProductosComponent implements OnInit, OnDestroy {
   constructor(
     private productosService: ProductosService,
     private carritoService: CarritoService,
+    private imageService: ImageService,
     private router: Router
   ) {}
 
@@ -40,6 +42,10 @@ export class ProductosComponent implements OnInit, OnDestroy {
     this.ordenSeleccionado = this.productosService.ordenSeleccionado;
     this.categoriasSeleccionadas = this.productosService.categoriasSeleccionadas;
     this.marcasSeleccionadas = this.productosService.marcasSeleccionadas;
+  }
+
+  getImagen(item: any): string {
+    return this.imageService.obtenerUrlImagen(item.imagen);
   }
 
   onBuscarNombre(): void {

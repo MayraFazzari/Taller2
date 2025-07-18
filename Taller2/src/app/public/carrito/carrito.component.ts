@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common'
 import { CarritoService } from '../../services/carrito.service'
+import { ImageService } from '../../services/image.service';
 
 @Component({
   selector: 'app-carrito',
@@ -11,13 +12,17 @@ import { CarritoService } from '../../services/carrito.service'
 })
 export class CarritoComponent implements OnInit {
   carrito: any[] = []
-  constructor(private carritoService: CarritoService) {}
+  constructor(private carritoService: CarritoService, private imageService: ImageService) {}
 
   ngOnInit(): void {
     this.carritoService.obtenerCarrito().subscribe({
       next: productos => this.carrito = productos,
       error: () => alert('Debes iniciar sesión para ver el carrito')
     });
+  }
+
+  getImagen(item: any): string {
+    return this.imageService.obtenerUrlImagen(item.imagen);
   }
 
   getTotal(): number {
