@@ -22,6 +22,7 @@ export class ProductosComponent implements OnInit, OnDestroy {
   marcasSeleccionadas: Set<string> = new Set();
 
   private subscription: Subscription = new Subscription();
+  cantidades: { [id: number]: number } = {};
 
   constructor(
     private productosService: ProductosService,
@@ -36,7 +37,6 @@ export class ProductosComponent implements OnInit, OnDestroy {
       this.productosFiltrados = productos;
     });
 
-    //  reflejar en la vista los valores actuales del servicio
     this.nombreBuscado = this.productosService.nombreBuscado;
     this.ordenSeleccionado = this.productosService.ordenSeleccionado;
     this.categoriasSeleccionadas = this.productosService.categoriasSeleccionadas;
@@ -62,25 +62,40 @@ export class ProductosComponent implements OnInit, OnDestroy {
     this.productosService.actualizarOrden(orden);
   }
 
-  agregarAlCarrito(producto: any): void {
-    const usuario = JSON.parse(localStorage.getItem('usuario') || 'null');
-
-    if (!usuario || !usuario.email) {
-      this.router.navigate(['/usuarios/signin']);
-      return;
-    }
-
-    this.carritoService.agregarProducto(usuario.email, producto).subscribe({
-      next: () => {
-        this.carritoService.actualizarCantidadProducto(usuario.email);
-      },
-      error: () => alert('Error al agregar al carrito')
-    });
+ 
+  getCantidad(productoId: number): number {
+    return this.cantidades[productoId] ?? 1;
   }
 
+  sumarCantidad(productoId: number): void {
+    this.cantidades[productoId] = this.getCantidad(productoId) + 1;
+  }
+
+  restarCantidad(productoId: number): void {
+    const actual = this.getCantidad(productoId);
+    if (actual > 1) {
+      this.cantidades[productoId] = actual - 1;
+    }
+  }
+  // ---------------------------------------------
+
+ agregarAlCarrito(producto: any): void {
+  const usuario = JSON.parse(localStorage.getItem('usuario') || 'null');
+  if (!usuario || !usuario.email) {
+    this.router.navigate(['/usuarios/signin']);
+    return;
+  }
+  const cantidad = this.getCantidad(producto.id);
+  const productoConCantidad = { ...producto, cantidad };
+  this.carritoService.agregarProducto(usuario.email, productoConCantidad).subscribe({
+    next: () => {
+      this.carritoService.actualizarCantidadProducto(usuario.email);
+    },
+    error: () => alert('Error al agregar al carrito')
+  });
+}
   ngOnDestroy(): void {
     this.productosService.limpiarFiltros();
     this.subscription.unsubscribe();
   }
-  
 }
