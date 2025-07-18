@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, map } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductosService {
-  private apiUrl = 'http://localhost:5000/productos'
   private productos: any[] = [];
   private productosFiltradosSubject = new BehaviorSubject<any[]>([]);
   productosFiltrados$ = this.productosFiltradosSubject.asObservable();
@@ -20,7 +20,7 @@ export class ProductosService {
 
   // productos desde el back
   cargarProductos() {
-    this.http.get<any[]>(this.apiUrl).subscribe(data => {
+    this.http.get<any[]>(environment.prod_url).subscribe(data => {
       this.productos = data;
       this.recuperarFiltros();
       this.aplicarFiltros();
@@ -38,7 +38,7 @@ export class ProductosService {
     this.marcasSeleccionadas = new Set(marcasGuardadas.map((m: string) => m.toLowerCase()));
   }
 
- 
+
   aplicarFiltros() {
     let filtrados = this.productos
       .filter(p => {
@@ -61,7 +61,7 @@ export class ProductosService {
     this.productosFiltradosSubject.next(filtrados);
   }
 
-  
+
   actualizarBusqueda(nombre: string) {
     this.nombreBuscado = nombre;
     localStorage.setItem('nombreBuscado', nombre);

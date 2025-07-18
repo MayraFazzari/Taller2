@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms'
 import { ProductosService } from '../../services/productos.service';
 import { CarritoService } from '../../services/carrito.service';
 import { Subscription } from 'rxjs';
@@ -10,7 +9,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-productos',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css']
 })
@@ -62,7 +61,7 @@ export class ProductosComponent implements OnInit, OnDestroy {
     this.productosService.actualizarOrden(orden);
   }
 
- 
+
   getCantidad(productoId: number): number {
     return this.cantidades[productoId] ?? 1;
   }
