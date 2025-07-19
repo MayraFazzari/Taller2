@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -17,7 +17,10 @@ export class MenuComponent {
   usuario: any = null;
   cantidadProductos: number = 0;
 
-  constructor(private authService: AuthService, private router: Router, private carritoService: CarritoService, private productosService: ProductosService) {}
+  private authService = inject(AuthService);
+  private router = inject(Router);
+  private carritoService = inject(CarritoService);
+  private productosService = inject(ProductosService);
 
   ngOnInit(): void {
     this.authService.getUsuario().subscribe(u => {

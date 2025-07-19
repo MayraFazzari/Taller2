@@ -5,28 +5,7 @@
     "nombre": "Mayra",
     "apellido": "Fazzari",
     "direccion": "Mi casa 123",
-    "carrito": [
-      {
-        "id": 1,
-        "nombre": "Labial Mate Rosa",
-        "descripcion": "Labial de larga duración",
-        "clasificacion": "Labial",
-        "precio": 3200,
-        "imagen": "/public/imagenes/labial1.jpg",
-        "marca": "Dapop",
-        "cantidad": 2
-      },
-      {
-        "id": 6,
-        "nombre": "Corrector Ultra",
-        "descripcion": "Corrector Ultra",
-        "clasificacion": "Corrector",
-        "precio": 4500,
-        "imagen": "/public/imagenes/corrector3.jpg",
-        "marca": "Maybelline",
-        "cantidad": 3
-      }
-    ]
+    "carrito": []
   },
   {
     "email": "fraganciasfg2024@gmail.com",
@@ -48,18 +27,7 @@
     "nombre": "ailen",
     "apellido": "fazzari",
     "direccion": "illia2044",
-    "carrito": [
-      {
-        "id": 2,
-        "nombre": "Labial Rojo",
-        "descripcion": "Labial liquido rojo",
-        "clasificacion": "Labial",
-        "precio": 4500,
-        "imagen": "/public/imagenes/labial2.jpg",
-        "marca": "Natura",
-        "cantidad": 5
-      }
-    ]
+    "carrito": []
   },
   {
     "email": "marcela@gmail.com",
@@ -88,28 +56,7 @@
     "nombre": "mayra",
     "apellido": "fazzari",
     "direccion": "illia 5488",
-    "carrito": [
-      {
-        "id": 4,
-        "nombre": "Corrector cremoso",
-        "descripcion": "Corrector en barra",
-        "clasificacion": "corrector",
-        "precio": 4000,
-        "imagen": "/public/imagenes/corrector1.jpg",
-        "marca": "Rimmel",
-        "cantidad": 1
-      },
-      {
-        "id": 2,
-        "nombre": "Labial Rojo",
-        "descripcion": "Labial liquido rojo",
-        "clasificacion": "Labial",
-        "precio": 4500,
-        "imagen": "/public/imagenes/labial2.jpg",
-        "marca": "Natura",
-        "cantidad": 1
-      }
-    ]
+    "carrito": []
   },
   {
     "email": "mica@gmail.com",

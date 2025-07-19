@@ -12,7 +12,8 @@ import { ImageService } from '../../services/image.service';
 })
 export class CarritoComponent implements OnInit {
   carrito: any[] = []
-  constructor(private carritoService: CarritoService, private imageService: ImageService) {}
+  private carritoService = inject(CarritoService);
+  private imageService = inject(ImageService);
 
   ngOnInit(): void {
     this.carritoService.obtenerCarrito().subscribe({

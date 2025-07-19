@@ -18,7 +18,6 @@ export class ProductosService {
 
   private http = inject(HttpClient);
 
-  // productos desde el back
   cargarProductos() {
     this.http.get<any[]>(environment.prod_url).subscribe(data => {
       this.productos = data;
@@ -27,7 +26,6 @@ export class ProductosService {
     });
   }
 
-  //  Guardar y cargar filtros desde localStorage
   private recuperarFiltros() {
     const categoriasGuardadas = JSON.parse(localStorage.getItem('categoriasSeleccionadas') || '[]');
     const marcasGuardadas = JSON.parse(localStorage.getItem('marcasSeleccionadas') || '[]');
@@ -37,7 +35,6 @@ export class ProductosService {
     this.categoriasSeleccionadas = new Set(categoriasGuardadas);
     this.marcasSeleccionadas = new Set(marcasGuardadas.map((m: string) => m.toLowerCase()));
   }
-
 
   aplicarFiltros() {
     let filtrados = this.productos

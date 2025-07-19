@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms'
@@ -21,12 +21,10 @@ export class ProductosComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();
   cantidades: { [id: number]: number } = {};
 
-  constructor(
-    private productosService: ProductosService,
-    private carritoService: CarritoService,
-    private imageService: ImageService,
-    private router: Router
-  ) {}
+  private productosService = inject(ProductosService);
+  private carritoService = inject(CarritoService);
+  private imageService = inject(ImageService);
+  private router = inject(Router);
 
   ngOnInit(): void {
     this.productosService.cargarProductos();
@@ -104,8 +102,6 @@ export class ProductosComponent implements OnInit, OnDestroy {
   this.productosService.aplicarFiltros();
 }
 
-  // ---------------------------------------------
-
  agregarAlCarrito(producto: any): void {
   const usuario = JSON.parse(localStorage.getItem('usuario') || 'null');
   if (!usuario || !usuario.email) {
@@ -122,7 +118,6 @@ export class ProductosComponent implements OnInit, OnDestroy {
   });
 }
   ngOnDestroy(): void {
-    //this.productosService.limpiarFiltros();
     this.subscription.unsubscribe();
   }
 }
