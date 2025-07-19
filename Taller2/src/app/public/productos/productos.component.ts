@@ -121,7 +121,7 @@ export class ProductosComponent implements OnInit, OnDestroy {
   });
 }
   ngOnDestroy(): void {
-    this.productosService.limpiarFiltros();
+    //this.productosService.limpiarFiltros();
     this.subscription.unsubscribe();
   }
 }

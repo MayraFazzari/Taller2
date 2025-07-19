@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CarritoService } from '../../services/carrito.service';
+import { ProductosService } from '../../services/productos.service';
 
 @Component({
   selector: 'app-menu',
@@ -16,7 +17,7 @@ export class MenuComponent {
   usuario: any = null;
   cantidadProductos: number = 0;
 
-  constructor(private authService: AuthService, private router: Router, private carritoService: CarritoService) {}
+  constructor(private authService: AuthService, private router: Router, private carritoService: CarritoService, private productosService: ProductosService) {}
 
   ngOnInit(): void {
     this.authService.getUsuario().subscribe(u => {
@@ -34,6 +35,7 @@ export class MenuComponent {
   cerrarSesion(): void {
     this.authService.cerrarSesion();
     this.carritoService.actualizarCantidadProducto();
+    this.productosService.limpiarFiltros();
     this.router.navigate(['/']);
   }
 }
