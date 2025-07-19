@@ -15,6 +15,16 @@
         "imagen": "/public/imagenes/labial1.jpg",
         "marca": "Dapop",
         "cantidad": 2
+      },
+      {
+        "id": 6,
+        "nombre": "Corrector Ultra",
+        "descripcion": "Corrector Ultra",
+        "clasificacion": "Corrector",
+        "precio": 4500,
+        "imagen": "/public/imagenes/corrector3.jpg",
+        "marca": "Maybelline",
+        "cantidad": 3
       }
     ]
   },

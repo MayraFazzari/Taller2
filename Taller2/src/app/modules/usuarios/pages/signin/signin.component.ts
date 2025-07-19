@@ -29,6 +29,16 @@ export class SigninComponent {
   }
 
   iniciarSesion(): void {
+    if (this.formulario.invalid) {
+    this.mensaje = 'Faltan datos';
+    this.mensajeTipo = 'error';
+
+    setTimeout(() => {
+      this.mensaje = '';
+      this.mensajeTipo = '';
+    }, 3000);
+    return; 
+  }
     const datos = this.formulario.value;
     this.productosService.limpiarFiltros();
 
