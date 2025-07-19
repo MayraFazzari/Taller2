@@ -6,11 +6,12 @@ import { ProductosService } from '../../services/productos.service';
 import { CarritoService } from '../../services/carrito.service';
 import { ImageService } from '../../services/image.service';
 import { Subscription } from 'rxjs';
+import { CardProductoComponent } from '../card-producto/card-producto.component';
 
 @Component({
   selector: 'app-productos',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule,CardProductoComponent],
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css']
 })
