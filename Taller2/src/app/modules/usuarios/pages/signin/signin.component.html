@@ -1,6 +1,15 @@
 <div class="signin-container">
   <h2>Iniciar sesión</h2>
 
+   <div
+    class="mensaje"
+    [class.visible]="mensaje !== ''"
+    [class.exito]="mensajeTipo === 'exito'"
+    [class.error]="mensajeTipo === 'error'"
+  >
+    {{ mensaje }}
+  </div>
+
   <form [formGroup]="formulario" (ngSubmit)="iniciarSesion()">
     <label>Email:</label>
     <input type="email" formControlName="email">

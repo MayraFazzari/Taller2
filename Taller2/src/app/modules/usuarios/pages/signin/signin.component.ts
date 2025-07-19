@@ -14,6 +14,8 @@ import { AuthService } from '../../../../services/auth.service';
 })
 export class SigninComponent {
   formulario: FormGroup;
+  mensaje: string = '';
+  mensajeTipo: 'exito' | 'error' = 'error';
 
   constructor(
     private fb: FormBuilder,
@@ -36,8 +38,8 @@ export class SigninComponent {
         this.router.navigate(['/productos']);
       },
       error: (err) => {
-        alert('Email o contraseña incorrectos');
-        console.error(err);
+        this.mensaje = 'Email o contraseña incorrectos';
+        this.mensajeTipo = 'error';
       }
     });
   }

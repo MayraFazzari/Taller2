@@ -5,7 +5,18 @@
     "nombre": "Mayra",
     "apellido": "Fazzari",
     "direccion": "Mi casa 123",
-    "carrito": []
+    "carrito": [
+      {
+        "id": 1,
+        "nombre": "Labial Mate Rosa",
+        "descripcion": "Labial de larga duración",
+        "clasificacion": "Labial",
+        "precio": 3200,
+        "imagen": "/public/imagenes/labial1.jpg",
+        "marca": "Dapop",
+        "cantidad": 2
+      }
+    ]
   },
   {
     "email": "fraganciasfg2024@gmail.com",
