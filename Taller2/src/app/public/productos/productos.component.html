@@ -100,31 +100,22 @@
       </div>
     </aside>
 
-
-    <section class="products-list">
-      @for (producto of productosFiltrados; track producto.id) {
-      <div class="product-card" style="background-color: white;">
-        <img [src]="getImagen(producto)" alt="{{ producto.nombre }}" width="300" height="180" />
-        <h3>{{ producto.nombre }}</h3>
-        <p>{{ producto.descripcion }}</p>
-        <p><strong>$ {{ producto.precio }}</strong></p>
-
-        <div class="cantidad-control">
-          <button (click)="restarCantidad(producto.id)" [disabled]="getCantidad(producto.id) <= 1">-</button>
-          <input type="number" [value]="getCantidad(producto.id)" min="1" readonly
-            style="width: 3em; text-align: center;" />
-          <button (click)="sumarCantidad(producto.id)">+</button>
-        </div>
-
-        <button (click)="agregarAlCarrito(producto)" class="btn-carrito"> 🛒 Agregar al carrito</button>
-      </div>
-      }
-      @if (productosFiltrados.length === 0) {
-      <div class="mensaje-vacio">
-        🫣 No encontramos productos que coincidan con tu búsqueda.
-      </div>
-      }
-
-    </section>
+   <section class="products-list">
+  @for (producto of productosFiltrados; track producto.id) {
+    <app-card-producto
+      [producto]="producto"
+      [cantidad]="getCantidad(producto.id)"
+      [imagen]="getImagen(producto)"
+      (sumar)="sumarCantidad(producto.id)"
+      (restar)="restarCantidad(producto.id)"
+      (agregar)="agregarAlCarrito(producto)">
+    </app-card-producto>
+  }
+  @if (productosFiltrados.length === 0) {
+    <div class="mensaje-vacio">
+      🫣 No encontramos productos que coincidan con tu búsqueda.
+    </div>
+  }
+</section>
   </div>
 </main>
