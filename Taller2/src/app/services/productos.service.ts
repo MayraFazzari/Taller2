@@ -87,7 +87,6 @@ export class ProductosService {
     this.aplicarFiltros();
   }
 
-
   limpiarFiltros() {
     localStorage.removeItem('categoriasSeleccionadas');
     localStorage.removeItem('marcasSeleccionadas');
