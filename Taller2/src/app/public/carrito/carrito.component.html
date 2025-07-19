@@ -17,7 +17,7 @@
         <tbody>
           @for (item of carrito; track item.id) {
           <tr>
-            <td><img [src]="'http://localhost:5000' + item.imagen" alt="{{ item.nombre }}" class="img-carrito" /></td>
+            <td><img [src]="getImagen(item)" alt="{{ item.nombre }}" class="img-carrito" /></td>
             <td>{{ item.nombre }}</td>
             <td>$ {{ item.precio }}</td>
             <td class="cantidad">

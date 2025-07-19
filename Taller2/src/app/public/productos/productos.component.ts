@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms'
 import { ProductosService } from '../../services/productos.service';
 import { CarritoService } from '../../services/carrito.service';
+import { ImageService } from '../../services/image.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -15,10 +16,10 @@ import { Subscription } from 'rxjs';
 })
 export class ProductosComponent implements OnInit, OnDestroy {
   productosFiltrados: any[] = [];
-  nombreBuscado: string = '';
-  ordenSeleccionado: string = '';
-  categoriasSeleccionadas: Set<string> = new Set();
-  marcasSeleccionadas: Set<string> = new Set();
+  //nombreBuscado: string = '';
+  //ordenSeleccionado: string = '';
+  //categoriasSeleccionadas: Set<string> = new Set();
+  //marcasSeleccionadas: Set<string> = new Set();
 
   private subscription: Subscription = new Subscription();
   cantidades: { [id: number]: number } = {};
@@ -26,6 +27,7 @@ export class ProductosComponent implements OnInit, OnDestroy {
   constructor(
     private productosService: ProductosService,
     private carritoService: CarritoService,
+    private imageService: ImageService,
     private router: Router
   ) {}
 
@@ -36,14 +38,38 @@ export class ProductosComponent implements OnInit, OnDestroy {
       this.productosFiltrados = productos;
     });
 
-    this.nombreBuscado = this.productosService.nombreBuscado;
-    this.ordenSeleccionado = this.productosService.ordenSeleccionado;
-    this.categoriasSeleccionadas = this.productosService.categoriasSeleccionadas;
-    this.marcasSeleccionadas = this.productosService.marcasSeleccionadas;
+    //this.nombreBuscado = this.productosService.nombreBuscado;
+    //this.ordenSeleccionado = this.productosService.ordenSeleccionado;
+    //this.categoriasSeleccionadas = this.productosService.categoriasSeleccionadas;
+    //this.marcasSeleccionadas = this.productosService.marcasSeleccionadas;
   }
 
-  onBuscarNombre(): void {
+  get nombreBuscado(): string {
+    return this.productosService.nombreBuscado;
+  }
+
+  get ordenSeleccionado(): string {
+    return this.productosService.ordenSeleccionado;
+  }
+
+  get categoriasSeleccionadas(): Set<string> {
+    return this.productosService.categoriasSeleccionadas;
+  }
+
+  get marcasSeleccionadas(): Set<string> {
+    return this.productosService.marcasSeleccionadas;
+  }
+
+  getImagen(item: any): string {
+    return this.imageService.obtenerUrlImagen(item.imagen);
+  }
+
+  /*onBuscarNombre(): void {
     this.productosService.actualizarBusqueda(this.nombreBuscado);
+  }*/
+
+  set nombreBuscado(value: string) {
+    this.productosService.actualizarBusqueda(value);
   }
 
   onCategoriaChange(event: Event, categoria: string): void {
@@ -54,6 +80,10 @@ export class ProductosComponent implements OnInit, OnDestroy {
   onMarcaChange(event: Event, marca: string): void {
     const checked = (event.target as HTMLInputElement).checked;
     this.productosService.actualizarMarca(marca, checked);
+  }
+
+  set ordenSeleccionado(value: string) {
+    this.productosService.ordenSeleccionado = value;
   }
 
   ordenarProductos(orden: string): void {
@@ -86,9 +116,9 @@ export class ProductosComponent implements OnInit, OnDestroy {
   }
   const cantidad = this.getCantidad(producto.id);
   const productoConCantidad = { ...producto, cantidad };
-  this.carritoService.agregarProducto(usuario.email, productoConCantidad).subscribe({
+  this.carritoService.agregarProducto(productoConCantidad).subscribe({
     next: () => {
-      this.carritoService.actualizarCantidadProducto(usuario.email);
+      this.carritoService.actualizarCantidadProducto();
     },
     error: () => alert('Error al agregar al carrito')
   });

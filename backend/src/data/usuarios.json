@@ -1,20 +1,20 @@
 [
   {
     "email": "mayra@gmail.com",
-    "password": "1234",
+    "password": "Mayra1234",
     "nombre": "Mayra",
     "apellido": "Fazzari",
     "direccion": "Mi casa 123",
     "carrito": [
       {
-        "id": 5,
-        "nombre": "Corrector",
-        "descripcion": "Corrector NG",
-        "clasificacion": "Corrector",
-        "precio": 6000,
-        "imagen": "/public/imagenes/corrector2.jpg",
-        "marca": "Rimmel",
-        "cantidad": 1
+        "id": 1,
+        "nombre": "Labial Mate Rosa",
+        "descripcion": "Labial de larga duración",
+        "clasificacion": "Labial",
+        "precio": 3200,
+        "imagen": "/public/imagenes/labial1.jpg",
+        "marca": "Dapop",
+        "cantidad": 2
       }
     ]
   },
@@ -38,7 +38,18 @@
     "nombre": "ailen",
     "apellido": "fazzari",
     "direccion": "illia2044",
-    "carrito": []
+    "carrito": [
+      {
+        "id": 2,
+        "nombre": "Labial Rojo",
+        "descripcion": "Labial liquido rojo",
+        "clasificacion": "Labial",
+        "precio": 4500,
+        "imagen": "/public/imagenes/labial2.jpg",
+        "marca": "Natura",
+        "cantidad": 5
+      }
+    ]
   },
   {
     "email": "marcela@gmail.com",

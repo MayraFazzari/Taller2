@@ -5,14 +5,20 @@
 
   <div class="navbar-links">
 
-     <ng-container *ngIf="usuario; else noLogin">
-      <span style="color: white;" >Hola, {{ usuario.nombre }}!</span>
-      <a (click)="cerrarSesion()" class="cerrar-sesion" style="color: black;" >Cerrar sesión</a>
-    </ng-container>
+    @if (usuario) {
+      <span style="color: white;">Hola, {{ usuario.nombre }}!</span>
+      <a (click)="cerrarSesion()" class="cerrar-sesion" style="color: black;">Cerrar sesión</a>
+    } @else {
+      <a routerLink="/usuarios/signin">Iniciar Sesión</a>
+      <a routerLink="/usuarios/signup">Registrarse</a>
+    }
 
     <a routerLink="/productos">Productos</a>
-    <a routerLink="/carrito" class="carrito">🛒Carrito <span *ngIf="cantidadProductos > 0" class="cant-productos">{{ cantidadProductos }}</span> </a>
-
+    <a routerLink="/carrito" class="carrito"> 🛒Carrito
+      @if (cantidadProductos > 0) {
+        <span class="cant-productos">{{ cantidadProductos }}</span>
+      }
+    </a>
     <ng-template #noLogin>
       <a [routerLink]="['/usuarios/signin']">Iniciar Sesión</a>
       <a [routerLink]="['/usuarios/signup']">Registrarse</a>
