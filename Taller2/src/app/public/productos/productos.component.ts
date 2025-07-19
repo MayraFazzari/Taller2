@@ -93,6 +93,16 @@ export class ProductosComponent implements OnInit, OnDestroy {
       this.cantidades[productoId] = actual - 1;
     }
   }
+
+  limpiarFiltros(): void {
+  this.productosService.limpiarFiltros();
+  this.productosService.nombreBuscado = '';
+  this.productosService.categoriasSeleccionadas.clear();
+  this.productosService.marcasSeleccionadas.clear();
+  this.productosService.ordenSeleccionado = '';
+  this.productosService.aplicarFiltros();
+}
+
   // ---------------------------------------------
 
  agregarAlCarrito(producto: any): void {

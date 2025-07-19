@@ -12,7 +12,7 @@
 .filters {
   width: 250px;
   padding: 1.5rem;
-  background-color: #faf5f9; 
+  background-color: #faf5f9;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   font-size: 0.95rem;
@@ -21,7 +21,7 @@
 
 .filters h4 {
   font-size: 1.2rem;
-  color: #c71585; 
+  color: #c71585;
   margin-bottom: 1rem;
   border-bottom: 2px solid #eac5d8;
   padding-bottom: 0.5rem;
@@ -117,7 +117,8 @@
   padding: 2em;
   border-radius: 8px;
 }
-.btn-carrito {
+.btn-carrito,
+.btn-limpiar {
   background-color: #000000;
   color: white;
   border: none;
@@ -127,7 +128,8 @@
   transition: background-color blac ease;
 }
 
-.btn-carrito:hover {
+.btn-carrito:hover,
+.btn-limpiar:hover {
   background-color: #a5006d;
   color:white;
 }
