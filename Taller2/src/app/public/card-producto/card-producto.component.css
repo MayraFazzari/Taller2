@@ -24,6 +24,7 @@
   height: 430px;
   border: 1px solid #ccc;
   transition: border 0.3s ease, transform 0.3s ease;
+  background-color: white;
 }
 .product-card:hover {
   border: 2px solid #c71585;
