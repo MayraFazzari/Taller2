@@ -16,10 +16,6 @@ import { Subscription } from 'rxjs';
 })
 export class ProductosComponent implements OnInit, OnDestroy {
   productosFiltrados: any[] = [];
-  //nombreBuscado: string = '';
-  //ordenSeleccionado: string = '';
-  //categoriasSeleccionadas: Set<string> = new Set();
-  //marcasSeleccionadas: Set<string> = new Set();
 
   private subscription: Subscription = new Subscription();
   cantidades: { [id: number]: number } = {};
@@ -37,11 +33,6 @@ export class ProductosComponent implements OnInit, OnDestroy {
     this.subscription = this.productosService.productosFiltrados$.subscribe(productos => {
       this.productosFiltrados = productos;
     });
-
-    //this.nombreBuscado = this.productosService.nombreBuscado;
-    //this.ordenSeleccionado = this.productosService.ordenSeleccionado;
-    //this.categoriasSeleccionadas = this.productosService.categoriasSeleccionadas;
-    //this.marcasSeleccionadas = this.productosService.marcasSeleccionadas;
   }
 
   get nombreBuscado(): string {
@@ -63,10 +54,6 @@ export class ProductosComponent implements OnInit, OnDestroy {
   getImagen(item: any): string {
     return this.imageService.obtenerUrlImagen(item.imagen);
   }
-
-  /*onBuscarNombre(): void {
-    this.productosService.actualizarBusqueda(this.nombreBuscado);
-  }*/
 
   set nombreBuscado(value: string) {
     this.productosService.actualizarBusqueda(value);

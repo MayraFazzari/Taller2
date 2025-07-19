@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { SignupService} from '../../../../services/signup.service';
 
 @Component({
   selector: 'app-signup',
@@ -18,8 +18,8 @@ export class SignupComponent {
 
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private signupService: SignupService
   ) {
     this.formulario = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -33,23 +33,21 @@ export class SignupComponent {
   registrarUsuario() {
     const datos = this.formulario.value;
 
-    this.http.post('http://localhost:5000/api/register', datos).subscribe({
-      next: (res: any) => {
+    this.signupService.registrarUsuario(datos).subscribe({
+      next: () => {
         this.mensaje = 'Registro exitoso';
         this.mensajeTipo = 'exito';
 
-        // Espera 1.5s y redirige
         setTimeout(() => {
           this.mensaje = '';
           this.mensajeTipo = '';
           this.router.navigate(['/usuarios/signin']);
         }, 1500);
       },
-      error: (err: any) => {
+      error: (err: { error: { msg: string; }; }) => {
         this.mensaje = err.error?.msg || 'Error al registrarse';
         this.mensajeTipo = 'error';
 
-        // Limpia mensaje después de 3s
         setTimeout(() => {
           this.mensaje = '';
           this.mensajeTipo = '';
