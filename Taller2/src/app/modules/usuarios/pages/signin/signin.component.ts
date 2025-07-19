@@ -1,47 +1,51 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../../services/auth.service';
+import { ProductosService } from '../../../../services/productos.service';
 
 @Component({
   selector: 'app-signin',
-  standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './signin.component.html',
-  styleUrl: './signin.component.css'
+  styleUrls: ['./signin.component.css']
 })
 export class SigninComponent {
   formulario: FormGroup;
   mensaje: string = '';
-  mensajeTipo: 'exito' | 'error' = 'error';
+  mensajeTipo: 'exito' | 'error' | '' = '';
 
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private productosService: ProductosService
   ) {
     this.formulario = this.fb.group({
-      email: [''],
-      password: ['']
+      email: ['', Validators.required, Validators.email],
+      password: ['', Validators.required]
     });
   }
 
-  iniciarSesion() {
+  iniciarSesion(): void {
     const datos = this.formulario.value;
+    this.productosService.limpiarFiltros();
 
-    this.http.post<any>('http://localhost:5000/api/login', datos).subscribe({
-      next: (respuesta) => {
-        this.authService.setUsuario(respuesta.usuario);
-        this.router.navigate(['/productos']);
-      },
-      error: (err) => {
-        this.mensaje = 'Email o contraseña incorrectos';
-        this.mensajeTipo = 'error';
-      }
-    });
+    this.authService.login(datos).subscribe({
+    next: (respuesta) => {
+      this.authService.setUsuario(respuesta.usuario);
+      this.router.navigate(['/productos']);
+    },
+    error: (err) => {
+    this.mensaje = 'Email o contraseña incorrectos';
+    this.mensajeTipo = 'error';
+
+    setTimeout(() => {
+      this.mensaje = '';
+      this.mensajeTipo = '';
+    }, 3000);
+  }
+  });
   }
 }
-
